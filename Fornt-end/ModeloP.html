@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="modeloP.css">
     <title>Document</title>
   </head>
   <body>
@@ -45,7 +46,120 @@
       </div>
     </header>
     <main>
-      <div class="navigator"></div>
+      <div class="main_nav">
+              <div class="formu">
+        <div class="header_form">Cantidad Fija de Pedido</div>
+        <form action="">
+          <div class="field first">
+            <div>
+              <label
+                >Demanda:
+                <input type="text" />
+              </label>
+            </div>
+            <div>
+              <label>
+                Tipo de Demanda:
+                <select name="" id="">
+                  <option value="anual">Anual</option>
+                  <option value="mensual">Mensual</option>
+                  <option value="semanal">Semanal</option>
+                  <option value="diaria">Diaria</option>
+                </select>
+              </label>
+            </div>
+          </div>
+          <div class="field">
+            <label
+              >Costo de Pedir:
+              <input type="text" />
+            </label>
+          </div>
+          <div class="field">
+            <label
+              >Costo del Pedido:
+              <input type="text" />
+             <input type="checkbox" name="" id="check">
+          </div>
+          <div class="field">
+            <label>
+              Tasa de mantenimiento (%)
+              <input type="text" name="" id="" />
+              <input type="checkbox" name="" id="check">
+          </div>
+          <div class="field">
+            <label
+              >Costo de Mantenimiento:
+              <input type="text" name="" id="" />
+            </label>
+          </div>
+          <div class="field">
+            <label for=""
+              >Tiempo de espera:
+              <input type="text" />
+            </label>
+          </div>
+           <div class="field">
+            <label
+              >Desviacióon estandar:
+              <input type="text" />
+            </label>
+           </div>
+           <div class="field">
+            <label>
+              Desviacion Estandar durante el plazo(%):
+              <input type="text" name="" id="" />
+              <input type="checkbox" name="" id="check">
+          </div>
+           <div class="field">
+            <label
+              >Nivel de Confianza:
+              <input type="text" />
+            </label>
+           </div>
+            <div class="field">
+            <label
+              >Periodo de Revisión:
+              <input type="text" />
+            </label>
+           </div>
+            <div class="field">
+            <label
+              >Inventario Inicial:
+              <input type="text" />
+            </label>
+           </div>
+          <div class="fiel_btn">
+            <button class="btn" type="submit">Calcular</button>
+          </div>
+        </form>
+      </div>
+       <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Unidades Optimas</th>
+              <th>Punto de Reorden</th>
+              <th>Costo Total</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>30</td>
+              <td>10</td>
+              <td>5000</td>
+            </tr>
+         
+          </tbody>
+        </table>
+       </div>
+       <div class="dialog">
+         <div>
+           Dialogo
+         </div>
+       </div>
+      </div>
+      </div>
     </main>
     <footer>
       <div class="card_info" style="border-right: 1px solid var(--color-black)">
