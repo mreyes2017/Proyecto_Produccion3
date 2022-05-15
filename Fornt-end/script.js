@@ -1,6 +1,10 @@
 const mode = document.querySelector(".ball");
 const imgLog = document.querySelector(".logo_inner");
 const imgmode = document.querySelector(".modeSN");
+const inputs = document.querySelector("#checkeadoCostodePedir");
+const cuadro = document.querySelector("#checkCostodePedir");
+const inputsCosto = document.querySelector("#checkeadoTasa");
+const cuadroTasa = document.querySelector("#checkTasa");
 
 mode.addEventListener("click", function () {
   document.body.classList.toggle("dark");
@@ -30,3 +34,11 @@ if (localStorage.getItem("dark-mode") === "true") {
 } else {
   document.body.classList.remove("dark");
 }
+
+cuadro.addEventListener("click", function () {
+  inputs.toggleAttribute("disabled");
+});
+
+cuadroTasa.addEventListener("click", function () {
+  inputsCosto.toggleAttribute("disabled");
+});
