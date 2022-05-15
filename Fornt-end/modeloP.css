@@ -67,7 +67,7 @@ select {
   outline: none;
 }
 
-input {
+label > input {
   padding: 4px;
   font-size: 10px;
   border-width: 1px;

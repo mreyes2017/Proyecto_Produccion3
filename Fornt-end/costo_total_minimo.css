@@ -2,12 +2,11 @@ main {
   margin-top: 40px;
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
 }
 
 .formu {
   background-color: var(--color-formu);
-  width: 450px;
+  width: 400px;
   height: 350px;
   border-radius: 10px;
   box-shadow: 0 10px 24px 0 var(--color-div-formu);
@@ -118,18 +117,19 @@ input:focus {
 #check:checked {
   transform: scale(1.2);
   background: blue;
+  color: #fff;
+  border-color: #007bff;
+  background-color: #007bff;
 }
-
 table {
-  width: 60%;
-  height: 100px;
+  width: 100%;
   border-radius: 10px;
   background-color: var(--color-formu);
   text-align: center;
   color: var(--color-black);
   border-collapse: collapse;
   margin-inline-start: 40px;
-  margin-block-end: 40px;
+  margin-block-start: 20px;
 }
 
 th {

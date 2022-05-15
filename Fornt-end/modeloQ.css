@@ -3,12 +3,20 @@
   margin: 0;
 }
 
+.navigator {
+  width: 90%;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 0 auto;
+}
+
 .formu {
   background-color: var(--color-formu);
   width: 600px;
   height: 400px;
   inset-block-start: 20px;
-  inset-inline-start: 60px;
+
   border-radius: 10px;
   box-shadow: 0 10px 24px 0 var(--color-div-formu);
 }
@@ -55,7 +63,7 @@ select {
   outline: none;
 }
 
-input {
+label > input {
   padding: 3px;
   font-size: 13px;
   border-width: 1px;
