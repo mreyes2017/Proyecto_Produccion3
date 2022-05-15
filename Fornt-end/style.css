@@ -43,10 +43,25 @@ header {
 
 .logo img {
   object-fit: contain;
-  width: 230px;
+  width: 210px;
   height: 14vh;
 }
 
+.nav {
+  width: 50%;
+}
+.nav > ul {
+  display: flex;
+  height: 12vh;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nav > ul > li > a {
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--color-logo);
+}
 .search {
   display: flex;
   justify-content: space-evenly;
@@ -57,7 +72,7 @@ header {
 }
 
 .ul_search {
-  width: 240px;
+  width: 230px;
 }
 
 .ul_search > ul {
@@ -143,16 +158,16 @@ header {
 }
 
 .navigator {
-  width: 100%;
+  width: 90%;
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
   gap: 30px;
-  margin: 30px;
+  margin: 0 auto;
 }
 
 .card {
-  height: 340px;
+  max-height: 400px;
   width: 280px;
   background-color: var(--color-formu);
   border-radius: 8px;
@@ -170,14 +185,21 @@ header {
 }
 
 .card h3 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 40px;
   font-size: 16px;
   text-align: center;
   color: var(--color-black);
 }
 
 .card p {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 50px;
   font-size: 14px;
-  text-align: center;
   color: black;
   color: var(--color-black);
 }
@@ -186,7 +208,7 @@ header {
   text-align: center;
   padding: 10px;
   display: block;
-  margin-block-start: 10px;
+  margin-block: 10px;
   margin-inline: 70px;
   border-radius: 8px;
   background-color: rgb(0, 132, 255);
