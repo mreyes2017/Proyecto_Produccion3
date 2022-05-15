@@ -162,13 +162,13 @@ header {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
-  gap: 30px;
+
   margin: 0 auto;
 }
 
 .card {
   max-height: 400px;
-  width: 280px;
+  width: 290px;
   background-color: var(--color-formu);
   border-radius: 8px;
   margin: 30px;
