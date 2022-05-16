@@ -1,14 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <script src="https://kit.fontawesome.com/afd8869c61.js"></script>
-    <link rel="stylesheet" href="../static/style.css" />
-    <title>Piltover</title>
-  </head>
-  <body>
+{% extends 'base.html'%}
+{% block body %}
     <header>
       <div class="logo">
         <img
@@ -70,7 +61,7 @@
             <img src="../static/img/pexels-ModeloP.webp" alt="" />
             <h3>Modelo P</h3>
             <p>Modelos de periodo fijo</p>
-            <a href="modeloP.html" class="button_card">Ir</a>
+            <a href="ModeloP.html" class="button_card">Ir</a>
           </div>
           <div class="card">
             <img src="../static/img/pexels-photo-434311.jpeg" alt="" />
@@ -100,35 +91,4 @@
       </div>
     </main>
 
-    <footer>
-      <div class="card_info" style="border-right: 1px solid var(--color-black)">
-        <img src="../static/img/oliver_img.jpeg" alt="" class="image_info" />
-        <span>Oliver Luna</span>
-        <p>
-          Diseñador Front-end <br />
-          HTML | CSS | JavaScript
-        </p>
-      </div>
-      <div class="card_info" style="border-right: 1px solid var(--color-black)">
-        <img src="../static/img/william_img.jpeg" alt="" class="image_info" />
-        <span>William Guzman</span>
-        <p>
-          Programador Back-end <br />
-          Python
-        </p>
-      </div>
-      <div class="card_info" style="border-right: 1px solid var(--color-black)">
-        <img src="../static/img/moises_img.jpeg" alt="" class="image_info" />
-        <span>Moises Reyes</span>
-        <p>Programador Back-end <br />Python</p>
-      </div>
-      <div class="card_info" style="border-right: 1px solid var(--color-black)">
-        <img src="" alt="" class="image_info" />
-      </div>
-      <div class="card_info">
-        <img src="../static/img/pexels-photo-6169678.jpeg" alt="" class="image_info" />
-      </div>
-    </footer>
-    <script src="../static/script.js"></script>
-  </body>
-</html>
+    {% endblock %}
