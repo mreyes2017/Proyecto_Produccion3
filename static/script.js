@@ -5,6 +5,8 @@ const inputs = document.querySelector("#checkeadoCostodePedir");
 const cuadro = document.querySelector("#checkCostodePedir");
 const inputsCosto = document.querySelector("#checkeadoTasa");
 const cuadroTasa = document.querySelector("#checkTasa");
+const inputsDesv = document.querySelector("#CDesvEstandar");
+const cuadroDesv = document.querySelector("#DesvEstandar");
 
 mode.addEventListener("click", function () {
   document.body.classList.toggle("dark");
@@ -37,11 +39,14 @@ if (localStorage.getItem("dark-mode") === "true") {
   document.body.classList.remove("dark");
 }
 
-/*
 cuadro.addEventListener("click", function () {
   inputs.toggleAttribute("disabled");
 });
 
 cuadroTasa.addEventListener("click", function () {
   inputsCosto.toggleAttribute("disabled");
-});*/
+});
+
+cuadroDesv.addEventListener("click", function () {
+  inputsDesv.toggleAttribute("disabled");
+});

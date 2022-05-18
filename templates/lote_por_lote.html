@@ -1,62 +1,58 @@
- <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='lote_por_lote.css') }}" />
-    {% extends 'base.html' %}
-    {% block body %}
-  
-    <main>
-      <div class="formu">
-        <div class="header_form">Lote por Lote</div>
-        <form action="">
-          <div class="fields">
-            <label>
-              Costo de la Pieza:
-              <input type="text" />
-            </label>
-          </div>
-          <div class="fieds">
-            <label for="">
-              Costo de pedido:
-              <input type="text" />
-            </label>
-          </div>
-          <div class="fields">
-            <label for="">
-              Costo de llevar a invetario:
-              <input type="text" />
-            </label>
-          </div>
-          <div>
-            <label for="">
-              Necesidades Netas Semanales: <input type="text" />
-            </label>
-          </div>
-          <div class="fiel_btn">
-            <button class="btn" type="submit">Calcular</button>
-          </div>
-        </form>
-      </div>
+<link
+  rel="stylesheet"
+  type="text/css"
+  href="{{ url_for('static',filename='lote_por_lote.css') }}"
+/>
+{% extends 'base.html' %} {% block body %}
 
-      <div class="table-wra">
-        <table>
-          <thead>
-            <tr>
-              <th>Semanas</th>
-              <th>Necesidades Netas</th>
-              <th>Cantidad de Producción</th>
-              <th>Inventario Inicial</th>
-              <th>Costo de llevar al inventario</th>
-              <th>Costo de preparacion</th>
-              <th>Costo Total</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>30</td>
-              <td>10</td>
-              <td>5000</td>
-            </tr>
-          </tbody>
-        </table>
+<main>
+  <div class="formu">
+    <div class="header_form">Lote por Lote</div>
+    <form action="">
+      <div class="fields">
+        <label>
+          Costo de la Pieza:
+          <input type="text" />
+        </label>
       </div>
-    </main>
-    {% endblock %}
+      <div class="fieds">
+        <label for="">
+          Costo de pedido:
+          <input type="text" />
+        </label>
+      </div>
+      <div class="fields">
+        <label for="">
+          Costo de llevar a invetario:
+          <input type="text" />
+        </label>
+      </div>
+      <div>
+        <label for="">
+          Necesidades Netas Semanales: <input type="text" />
+        </label>
+      </div>
+      <div class="fiel_btn">
+        <button class="btn" type="submit">Calcular</button>
+      </div>
+    </form>
+  </div>
 
+  <div class="table-wra">
+    <table>
+      <thead>
+        <tr>
+          <th>Semanas</th>
+          <th>Necesidades Netas</th>
+          <th>Cantidad de Producción</th>
+          <th>Inventario Inicial</th>
+          <th>Costo de llevar al inventario</th>
+          <th>Costo de preparacion</th>
+          <th>Costo Total</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+  </div>
+</main>
+{% endblock %}

@@ -1,60 +1,59 @@
-<link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='modeloP.css') }}" />
-{% extends 'base.html' %}
-{% block body %}
-    <main>
-      <div class="formu">
-        <div class="header_form">Persecucion</div>
-        <form action="">
-          <div class="fields">
-            <label>
-              Inventario Inicial:
-              <input type="text" />
-            </label>
-          </div>
-          <div class="fieds">
-            <label for="">
-              Costo de Contratacion:
-              <input type="text" />
-            </label>
-          </div>
-          <div class="fields">
-            <label for="">
-              Costo por despido:
-              <input type="text" />
-            </label>
-          </div>
-          <div>
-            <label for=""> Costo por Almacenar: <input type="text" /> </label>
-          </div>
-          <div>
-            <label for=""> Costo por Faltante: <input type="text" /> </label>
-          </div>
-          <div>
-            <label for=""> Horas Laborales: <input type="text" /> </label>
-          </div>
-          <div>
-            <label for="">
-              Costo diario por Jornada: <input type="text" />
-            </label>
-          </div>
-          <div>
-            <label for="">
-              No de Empleados Iniciales: <input type="text" />
-            </label>
-          </div>
-          <div>
-            <label for="">
-              Produccion Promedio por Empleado: <input type="text" />
-            </label>
-          </div>
-          <div>
-            <label for=""> Periodos: <input type="text" /> </label>
-          </div>
-
-          <div class="fiel_btn">
-            <button class="btn" type="submit">Calcular</button>
-          </div>
-        </form>
+<link
+  rel="stylesheet"
+  type="text/css"
+  href="{{ url_for('static',filename='persecucion.css') }}"
+/>
+{% extends 'base.html' %} {% block body %}
+<main>
+  <div class="formu">
+    <div class="header_form">Persecucion</div>
+    <form action="">
+      <div class="fields">
+        <label>
+          Inventario Inicial:
+          <input type="text" />
+        </label>
       </div>
-    </main>
-    {% endblock %}
+      <div class="fieds">
+        <label for="">
+          Costo de Contratacion:
+          <input type="text" />
+        </label>
+      </div>
+      <div class="fields">
+        <label for="">
+          Costo por despido:
+          <input type="text" />
+        </label>
+      </div>
+      <div>
+        <label for=""> Costo por Almacenar: <input type="text" /> </label>
+      </div>
+      <div>
+        <label for=""> Costo por Faltante: <input type="text" /> </label>
+      </div>
+      <div>
+        <label for=""> Horas Laborales: <input type="text" /> </label>
+      </div>
+      <div>
+        <label for=""> Costo diario por Jornada: <input type="text" /> </label>
+      </div>
+      <div>
+        <label for=""> No de Empleados Iniciales: <input type="text" /> </label>
+      </div>
+      <div>
+        <label for="">
+          Produccion Promedio por Empleado: <input type="text" />
+        </label>
+      </div>
+      <div>
+        <label for=""> Periodos: <input type="text" /> </label>
+      </div>
+
+      <div class="fiel_btn">
+        <button class="btn" type="submit">Calcular</button>
+      </div>
+    </form>
+  </div>
+</main>
+{% endblock %}

@@ -110,7 +110,7 @@ input:focus {
   border: 1px solid white;
 }
 
-#check {
+.chekeado {
   position: absolute;
   margin-block-start: 4px;
   margin-inline-start: 10px;
@@ -118,12 +118,33 @@ input:focus {
   height: 16px;
   transition: all 300ms;
 }
-#check:checked {
+.chekeado:checked {
   transform: scale(1.2);
   background: blue;
-  /* color: #fff;
-  border-color: #007bff;
-  background-color: #007bff;*/
+}
+#checkeadoCostodePedir:disabled {
+  background-color: var(--color-table-tr);
+  transition: all 900ms;
+}
+#checkeadoCostodePedir {
+  transition: all 900ms;
+}
+
+#checkeadoTasa:disabled {
+  background-color: var(--color-table-tr);
+  transition: all 900ms;
+}
+
+#checkeadoTasa {
+  transition: all 900ms;
+}
+
+#CDesvEstandar:disabled {
+  background-color: var(--color-table-tr);
+  transition: all 900ms;
+}
+#CDesvEstandar {
+  transition: all 900ms;
 }
 
 .table-wrap {

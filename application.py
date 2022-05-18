@@ -1,6 +1,6 @@
-from cs50 import SQL
+#from cs50 import SQL
 from flask import Flask, flash, redirect, render_template, request, session,url_for
-from flask_session import Session
+#from flask_session import Session
 from tempfile import mkdtemp
 from werkzeug.exceptions import default_exceptions
 from werkzeug.security import check_password_hash, generate_password_hash
@@ -19,10 +19,10 @@ def after_request(response):
 app.config["SESSION_FILE_DIR"] = mkdtemp()
 app.config["SESSION_PERMANENT"] = False
 app.config["SESSION_TYPE"] = "filesystem"
-Session(app)
+#Session(app)
 
 
-db = SQL("sqlite:///proyecto.db")
+#db = SQL("sqlite:///proyecto.db")
 
 
 @app.route("/login", methods=["GET", "POST"])
@@ -144,6 +144,14 @@ def modeloctm():
 @app.route("/costo_unitario_minimo.html")
 def modelocum():
     return render_template("costo_unitario_minimo.html")
+
+@app.route("/Persecucion.html")
+def modeloperse():
+    return render_template("Persecucion.html")
+
+@app.route("/PlanAgregado.html")
+def modeloagre():
+    return render_template("PlanAgregado.html")
 
 if __name__ == '__main__':
     app.run(debug=True)
