@@ -11,20 +11,22 @@
   <body>
     <header>
       <div class="logo">
-        <img class="logo_inner" src="/static/img/logo_1.jpg" alt="Logo Piltover" />
+        <a href="/">
+          <img class="logo_inner" src="/static/img/logo_1.jpg" alt="Logo Piltover" />
+        </a>
       </div>
-      <div>
-        <ul>
-          <li><a href="/">Home</a></li>
-        </ul>
-      </div>
+      
     
       <div class="search">
         <div class="ul_search">
           <ul>
-            <li><a href="templates/login.html" class="button">Login</a></li>
+            {% if session.user_id %}
+            <li><a href="/logout" class="button">Logout</a></li>
+            {% else %}
+            <li><a href="/login" class="button">Login</a></li>
             <li><a href="" class="button">Sing Up</a></li>
-            <li><a href="/">Logout</a></li>
+            
+            {% endif %}
           </ul>
         </div>
         <div class="mode">

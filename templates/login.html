@@ -5,14 +5,47 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script src="https://kit.fontawesome.com/afd8869c61.js"></script>
-    <link rel="stylesheet" href="/Fornt-end/style.css" />
+    <link rel="stylesheet" href="{{ url_for('static',filename='style.css') }}" />
     <link
       rel="stylesheet"
       href="https://unicons.iconscout.com/release/v4.0.0/css/line.css"
     />
-    <link rel="stylesheet" href="/Fornt-end/style_login.css" />
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='style_login.css') }}" />
+   
   </head>
   <body>
+    <header>
+      <div class="logo">
+        <a href="/">
+        <img
+          class="logo_inner"
+          src="../static/img/logo_1.jpg"
+          alt="Logo Piltover"
+        /></a>
+      </div>
+      
+      <div class="search">
+        <div class="ul_search">
+          <ul>
+            <li><a href="" class="button">Login</a></li>
+            <li><a href="" class="button">Sing Up</a></li>
+          </ul>
+        </div>
+        <div class="mode">
+          <input type="checkbox" class="checkbox" id="chk" />
+          <label class="label" for="chk">
+            <div class="ball">
+              <img
+                class="modeSN"
+                src="../static/img/sun.png"
+                alt=""
+                style="height: 18px; width: 18px"
+              />
+            </div>
+          </label>
+        </div>
+      </div>
+    </header>
     <main>
       <div class="img_cover">
         <div class="container">
@@ -20,15 +53,16 @@
             <div class="form login">
               <span class="title">Login</span>
 
-              <form action="#">
+              <form action="/login" method="post">
                 <div class="input-field">
-                  <input type="text" placeholder="Enter your email" required />
+                  <input type="text"  name="username" placeholder="Enter your email" required />
                   <i class="uil uil-envelope icon"></i>
                 </div>
                 <div class="input-field">
                   <input
                     type="password"
                     class="password"
+                    name="password"
                     placeholder="Enter your password"
                     required
                   />
@@ -45,7 +79,7 @@
                 </div>
 
                 <div>
-                  <button class="input-field btn">Login Now</button>
+                  <button type="submit" class="input-field btn">Login Now</button>
                 </div>
               </form>
 
@@ -61,7 +95,7 @@
             <div class="form signup">
               <span class="title">Registration</span>
 
-              <form action="#">
+              <form action="/register" method="post">
                 <div class="input-field">
                   <input type="text" placeholder="Enter your name" required />
                   <i class="uil uil-user"></i>
@@ -114,36 +148,8 @@
         </div>
       </div>
     </main>
-    <footer>
-      <div class="card_info" style="border-right: 1px solid var(--color-black)">
-        <img src="/Fornt-end/img/oliver_img.jpeg" alt="" class="image_info" />
-        <span>Oliver Luna</span>
-        <p>
-          Diseñador Fornt-end <br />
-          HTML | CSS | JavaScript
-        </p>
-      </div>
-      <div class="card_info" style="border-right: 1px solid var(--color-black)">
-        <img src="/Fornt-end/img/william_img.jpeg" alt="" class="image_info" />
-        <span>William Guzman</span>
-        <p>
-          Programador Back-end <br />
-          Python
-        </p>
-      </div>
-      <div class="card_info" style="border-right: 1px solid var(--color-black)">
-        <img src="/Fornt-end/img/moises_img.jpeg" alt="" class="image_info" />
-        <span>Moises Reyes</span>
-        <p>Programador Back-end <br />Python</p>
-      </div>
-      <div class="card_info" style="border-right: 1px solid var(--color-black)">
-        <img src="" alt="" class="image_info" />
-      </div>
-      <div class="card_info">
-        <img src="" alt="" class="image_info" />
-      </div>
-    </footer>
-    <script src="/Fornt-end/script.js"></script>
-    <script src="/Fornt-end/script_login.js"></script>
+   
+    <script src="{{ url_for('static',filename='script.js') }}"></script>
+    <script src="{{ url_for('static',filename='script_login.js') }}"></script>
   </body>
 </html>
