@@ -15,12 +15,12 @@
           <img class="logo_inner" src="/static/img/logo_1.jpg" alt="Logo Piltover" />
         </a>
       </div>
-      
-    
       <div class="search">
         <div class="ul_search">
           <ul>
             {% if session.user_id %}
+            
+            <li><a href="/" class="danger"> Bienvenido <br> {{session.nombre}}</a></li>
             <li><a href="/logout" class="button">Logout</a></li>
             {% else %}
             <li><a href="/login" class="button">Login</a></li>
@@ -44,6 +44,7 @@
         </div>
       </div>
     </header>
+    <br>
     {% block body %} {% endblock %}
 
     <footer>

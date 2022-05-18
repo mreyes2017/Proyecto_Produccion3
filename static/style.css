@@ -38,13 +38,14 @@ header {
 
 .logo {
   justify-self: center;
+  margin-left: 2%;
   /* inset-inline-start: calc(50% - 115px);*/
 }
 
 .logo img {
   object-fit: contain;
   width: 210px;
-  height: 14vh;
+  height: 12vh;
 }
 
 .nav {
@@ -267,5 +268,11 @@ footer {
 
 P {
   color: var(--color-black);
+  text-align: center;
+}
+
+.danger
+{
+  color: var(--color-logo);
   text-align: center;
 }
