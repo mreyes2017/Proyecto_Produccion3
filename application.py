@@ -73,17 +73,14 @@ def logout():
     return redirect("/")
 
 
-@app.route("/register", methods=["GET", "POST"])
+@app.route("/register", methods=["POST"])
 def register():
     if request.method == "POST":
         user = request.form.get("username")
         nombre1 = request.form.get("nombre1")
-        nombre2 = request.form.get("nombre2")
-        apellido1 = request.form.get("apellido1")
-        apellido2 = request.form.get("apellido2")
         ps = request.form.get("password")
         psa =request.form.get("Cpassword")
-        email = request.form.get("email")
+        email = request.form.get("username")
 
 
         userE = db.execute("SELECT username FROM users WHERE username = :username",username=user)
@@ -93,12 +90,6 @@ def register():
             return apology("El campo usuario esta vacio",400 )
         elif not nombre1:
             return apology("El campo primer nombre esta vacio",400 )
-        elif not nombre2:
-            return apology("El campo segundo nombre esta vacio",400 )
-        elif not apellido1:
-            return apology("El campo primer apellido esta vacio",400 )
-        elif not apellido2:
-            return apology("El campo segundo apellido esta vacio",400 )
         elif not email:
             return apology("El campo correo esta vacio",400 )
         elif not ps:
@@ -108,15 +99,14 @@ def register():
         elif ps != psa:
             return apology("Las contraseñas no coinciden",400 )
         elif not userE :
-            rows = db.execute("INSERT INTO users (id,username,hash,nombre1,nombre2,apellido1,apellido2,email) values (NULL,:username,:hashh,:nombre1,:nombre2,:apellido1,:apellido2,:email) ",username = user, hashh=generate_password_hash(ps),nombre1=nombre1,nombre2=nombre2,apellido1=apellido1,apellido2=apellido2,email=email )
+            rows = db.execute("INSERT INTO users (id,username,hash,nombre1,nombre2,apellido1,apellido2,email) values (NULL,:username,:hashh,:nombre1,:nombre2,:apellido1,:apellido2,:email) ",username = user, hashh=generate_password_hash(ps),nombre1=nombre1,nombre2="nombre2",apellido1="apellido1",apellido2="apellido2",email=email )
         else:
             return apology("El usuario ya existe",400 )
 
 
 
-        return redirect("/")
-    else:
-        return render_template("val.html")
+        return redirect("/login")
+    
 
 
 
