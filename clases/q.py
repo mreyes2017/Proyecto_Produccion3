@@ -1,7 +1,7 @@
 from math import sqrt
 
 
-class q:
+class qr:
     def __init__(self,demanda,costo_pedir,costo_almacen,costo_compra):
         self.demanda = demanda
         self.costo_pedir = costo_pedir
@@ -23,12 +23,13 @@ class n_pedidos:
         return (self.demanda / self.q)
 
 class tiempo_entre_pedidos:
-    def __init__(self,pedido):
+    def __init__(self,dias,pedido):
         self.pedido = pedido
+        self.dias = dias
     
     def tiempo_entre_pedido(self):
-        dias = 360
-        tiempo = float(dias / self.pedido)
+        
+        tiempo = float(self.dias / self.pedido)
         return tiempo
 
 class costo_total:
@@ -49,7 +50,7 @@ class costo_total:
 
 
 #Prueba
-william = q(1500000,80,10,2.5)
+william = qr(float("1500000"),float("80"),float("10"),float("2.5"))
 q = william.calcular_q()
 print(q)
 
@@ -58,7 +59,7 @@ moises = n_pedidos(1500000,q)
 np = moises.calcula_n_pedidos()
 print(np)
 
-oscar = tiempo_entre_pedidos(np)
+oscar = tiempo_entre_pedidos(360,np)
 tp = oscar.tiempo_entre_pedido()
 print(tp)
 

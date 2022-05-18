@@ -11,3 +11,4 @@ werkzeug
 csv
 urllib
 flask_socketio
+cs50

@@ -6,22 +6,22 @@
       <div class="navigator">
       <div class="formu">
         <div class="header_form">Cantidad Fija de Pedido</div>
-        <form action="">
+        <form action="/modeloQ.html" method="post">
           <div class="field first">
             <div>
               <label
                 >Demanda:
-                <input type="text" />
+                <input name="demanda" type="text" />
               </label>
             </div>
             <div>
               <label>
                 Tipo de Demanda:
-                <select name="" id="">
-                  <option value="anual">Anual</option>
-                  <option value="mensual">Mensual</option>
-                  <option value="semanal">Semanal</option>
-                  <option value="diaria">Diaria</option>
+                <select name="Tdemanda" id="">
+                  <option value="360">Anual</option>
+                  <option value="30">Mensual</option>
+                  <option value="6">Semanal</option>
+                  <option value="1">Diaria</option>
                 </select>
               </label>
             </div>
@@ -29,33 +29,22 @@
           <div class="field">
             <label
               >Costo de Pedir:
-              <input type="text" />
+              <input name="costo_pedir" type="text" />
             </label>
-          </div>
-          <div class="field">
-            <label
-              >Costo del Pedido:
-              <input type="text" id="checkeadoCostodePedir" disabled="disabled"/>
-             <input type="checkbox" name="" id="checkCostodePedir" />
           </div>
           <div class="field">
             <label>
               Tasa de mantenimiento (%)
-              <input type="text" name="" id="checkeadoTasa" disabled="disabled"/>
+              <input type="text" name="costo_almacen" id="checkeadoTasa" />
               <input type="checkbox" name="" id="checkTasa"  >
           </div>
           <div class="field">
             <label
-              >Costo de Mantenimiento:
-              <input type="text" name="" id="" />
+              >Costo del Producto:
+              <input type="text" name="costo_compra" id="" />
             </label>
           </div>
-          <div class="field">
-            <label for=""
-              >Tiempo de espera:
-              <input type="text" />
-            </label>
-          </div>
+          
           <div class="fiel_btn">
             <button class="btn" type="submit">Calcular</button>
           </div>
@@ -66,12 +55,18 @@
           <thead>
             <tr>
               <th>Unidades Optimas</th>
+              <th>N° Pedidos</th>
+              <th>Tiempo entre 2 Pedidos</th>
               <th>Punto de Reorden</th>
               <th>Costo Total</th>
             </tr>
           </thead>
           <tbody>
-           
+           <td>{{und_optima}}</td>
+           <td>{{np}}</td>
+           <td>{{tp}} Días</td>
+           <td>ROP:</td>
+           <td>{{ct}}</td>
          
           </tbody>
         </table>

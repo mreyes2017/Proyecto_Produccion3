@@ -5,6 +5,7 @@ from tempfile import mkdtemp
 from werkzeug.exceptions import default_exceptions
 from werkzeug.security import check_password_hash, generate_password_hash
 from helpers import apology, login_required
+from clases.q import *
 
 app = Flask(__name__)
 
@@ -117,9 +118,31 @@ def register():
 def template_test():
     return render_template('index.html')
 
-@app.route("/modeloQ.html")
+@app.route("/modeloQ.html", methods=["GET","POST"])
 def modeloq():
-    return render_template("modeloQ.html")
+    if request.method == "POST":
+        demanda = request.form.get("demanda")
+        #print(demanda)
+        Tdemanda = request.form.get("Tdemanda")
+        #print(Tdemanda)
+        costo_pedir = request.form.get("costo_pedir")
+        #print(costo_pedir)
+        costo_almacen = request.form.get("costo_almacen")
+        #print(costo_almacen)
+        costo_compra = request.form.get("costo_compra")
+        #print(costo_compra)
+        qt = qr(float(demanda),float(costo_pedir),float(costo_almacen),float(costo_compra))
+        und_optima = qt.calcular_q() #Imprimir
+        m = n_pedidos(float(demanda),float(und_optima))
+        np = m.calcula_n_pedidos() #Imprimir
+        o = tiempo_entre_pedidos(float(Tdemanda),float(np))
+        tp = o.tiempo_entre_pedido() #Imprimir
+        my = costo_total(float(demanda),float(costo_pedir),float(costo_almacen),float(costo_compra),float(und_optima))
+        ct = my.c_total() #Imprimir
+
+        return render_template("modeloQ.html", und_optima = und_optima, np = np, tp = tp, ct = ct )
+    else:
+        return render_template("modeloQ.html")
 
 @app.route("/ModeloSS.html")
 def modeloss():
