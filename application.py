@@ -145,11 +145,11 @@ def modelocum():
     return render_template("costo_unitario_minimo.html")
 
 @app.route("/Persecucion.html")
-def modelocum():
+def modeloperse():
     return render_template("Persecucion.html")
 
 @app.route("/PlanAgregado.html")
-def modelocum():
+def modeloagre():
     return render_template("PlanAgregado.html")
 
 if __name__ == '__main__':
