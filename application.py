@@ -6,6 +6,7 @@ from werkzeug.exceptions import default_exceptions
 from werkzeug.security import check_password_hash, generate_password_hash
 from helpers import apology, login_required
 from clases.q import *
+from clases.ROP import *
 
 app = Flask(__name__)
 
@@ -131,6 +132,7 @@ def modeloq():
         #print(costo_almacen)
         costo_compra = request.form.get("costo_compra")
         #print(costo_compra)
+        plazo_entrega = request.form.get("plazo")
         qt = qr(float(demanda),float(costo_pedir),float(costo_almacen),float(costo_compra))
         und_optima = qt.calcular_q() #Imprimir
         m = n_pedidos(float(demanda),float(und_optima))
@@ -139,8 +141,10 @@ def modeloq():
         tp = o.tiempo_entre_pedido() #Imprimir
         my = costo_total(float(demanda),float(costo_pedir),float(costo_almacen),float(costo_compra),float(und_optima))
         ct = my.c_total() #Imprimir
+        ro = ROP(float(demanda),float(plazo_entrega))
+        calculo=ro.calcular_rop()
 
-        return render_template("modeloQ.html", und_optima = und_optima, np = np, tp = tp, ct = ct )
+        return render_template("modeloQ.html", und_optima = und_optima, np = np, tp = tp, ct = ct ,calculo=calculo)
     else:
         return render_template("modeloQ.html")
 
