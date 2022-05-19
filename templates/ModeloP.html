@@ -6,12 +6,12 @@
       <div class="main_nav">
               <div class="formu">
         <div class="header_form">Cantidad Fija de Pedido</div>
-        <form action="">
+        <form action="/ModeloP.html" method="post">
           <div class="field first">
             <div>
-              <label
+              <label 
                 >Demanda:
-                <input type="text" />
+                <input type="text" name="demanda" />
               </label>
             </div>
             <div>
@@ -26,64 +26,35 @@
               </label>
             </div>
           </div>
-          <div class="field">
-            <label
-              >Costo de Pedir:
-              <input type="text" />
-            </label>
-          </div>
-          <div class="field">
-            <label
-              >Costo del Pedido:
-              <input type="text"  disabled="disabled" id="checkeadoCostodePedir"  />
-             <input type="checkbox" name=""  class="chekeado" id="checkCostodePedir">
-          </div>
-          <div class="field">
-            <label>
-              Tasa de mantenimiento (%)
-              <input type="text" name=""  disabled="disabled" id="checkeadoTasa"/>
-              <input type="checkbox" name="" class="chekeado" id="checkTasa">
-          </div>
-          <div class="field">
-            <label
-              >Costo de Mantenimiento:
-              <input type="text" name="" id="" />
-            </label>
-          </div>
-          <div class="field">
-            <label for=""
-              >Tiempo de espera:
-              <input type="text" />
-            </label>
-          </div>
-           <div class="field">
-            <label
-              >Desviacióon estandar:
-              <input type="text" />
-            </label>
-           </div>
+      
            <div class="field">
             <label>
               Desviacion Estandar durante el plazo(%):
-              <input type="text" name=""  id="CDesvEstandar" disabled="disabled"/>
+              <input type="text" name="desviacion"  id="CDesvEstandar" disabled="disabled"/>
               <input type="checkbox" name="" class="chekeado" id="DesvEstandar">
           </div>
            <div class="field">
             <label
               >Nivel de Confianza:
-              <input type="text" />
+              <input type="text" name="nivel_confianza" />
             </label>
            </div>
             <div class="field">
             <label
               >Periodo de Revisión:
-              <input type="text" />
+              <input type="text" name="periodo_revision"/>
+            </label>
+           </div>
+           <div class="field">
+            <label
+              >Tiempo de Entrega:
+              <input type="text" name="tiempo_entrega"/>
             </label>
            </div>
             <div class="field">
             <label
               >Inventario Inicial:
-              <input type="text" />
+              <input type="text"  name="inventario"/>
             </label>
            </div>
           <div class="fiel_btn">

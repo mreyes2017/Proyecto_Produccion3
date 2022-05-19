@@ -152,9 +152,19 @@ def modeloq():
 def modeloss():
     return render_template("ModeloSS.html")
 
-@app.route("/ModeloP.html")
+@app.route("/ModeloP.html", methods=["GET","POST"])
 def modelop():
-    return render_template("ModeloP.html")
+    if request.method == "POST":
+      demanda = request.form.get("demanda")
+      desviacion = request.form.get("desviacion")
+      nivel= request.form.get("nivel_confianza")
+      periodo= request.form.get("periodo_revision")
+      tiempo= request.form.get("tiempo_entrega")
+      inventario= request.form.get("inventario")
+
+      return render_template("ModeloP.html",demanda=demanda,desviacion=desviacion,nivel=nivel,periodo=periodo,tiempo=tiempo,inventario=inventario)
+    else:
+     return render_template("ModeloP.html")
 
 @app.route("/lote_por_lote.html")
 def modelol4l():
