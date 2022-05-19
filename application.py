@@ -9,7 +9,7 @@ from clases.q import *
 from clases.ROP import *
 
 app = Flask(__name__)
-
+#otro cambio xd 
 @app.after_request
 def after_request(response):
     response.headers["Cache-Control"] = "no-cache, no-store, must-revalidate"
