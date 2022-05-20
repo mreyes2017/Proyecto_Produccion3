@@ -134,15 +134,18 @@ def modeloq():
         costo_compra = request.form.get("costo_compra")
         #print(costo_compra)
         plazo_entrega = request.form.get("plazo")
-        qt = qr(float(demanda),float(costo_pedir),float(costo_almacen),float(costo_compra))
+        
+        tipo_demanda = request.form.get("Tdemanda")
+
+        qt = qr(float(demanda),float(costo_pedir),float(costo_almacen),float(costo_compra),float(tipo_demanda))
         und_optima = qt.calcular_q() #Imprimir
-        m = n_pedidos(float(demanda),float(und_optima))
+        m = n_pedidos(float(demanda),float(und_optima),float(tipo_demanda))
         np = m.calcula_n_pedidos() #Imprimir
         o = tiempo_entre_pedidos(float(Tdemanda),float(np))
         tp = o.tiempo_entre_pedido() #Imprimir
-        my = costo_total(float(demanda),float(costo_pedir),float(costo_almacen),float(costo_compra),float(und_optima))
+        my = costo_total(float(demanda),float(costo_pedir),float(costo_almacen),float(costo_compra),float(und_optima),float(tipo_demanda))
         ct = my.c_total() #Imprimir
-        ro = ROP(float(demanda),float(plazo_entrega))
+        ro = ROP(float(demanda),float(plazo_entrega),float(tipo_demanda))
         calculo=ro.calcular_rop()
 
         return render_template("modeloQ.html", und_optima = und_optima, np = np, tp = tp, ct = ct ,calculo=calculo)
@@ -166,7 +169,8 @@ def modelop():
       p = pr(int(demanda),int(desviacion),int(periodo),int(tiempo),int(inventario),int(nivel))
       z = p.calcular_z()
       calculo = p.calcular_p()
-      return render_template("ModeloP.html",calculo=calculo,resumen=" La cantidad óptima para pedir del producto es de "+str(calculo)+" Unidades con un tiempo de entrega de "+str(tiempo)+"días")
+      o = p.inventario_seguridad()
+      return render_template("ModeloP.html",calculo=calculo,resumen=" La cantidad óptima para pedir del producto es de "+str(calculo)+" Unidades ademas, se recomienda hacer un nuevo pedido al proveedor cuando las existencias lleguen hasta "+str(o)+" Unidades",stock=o)
     else:
      return render_template("ModeloP.html")
 

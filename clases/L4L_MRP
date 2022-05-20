@@ -1,5 +1,3 @@
-
-from openpyxl import NUMPY
 class Producto:
    def __init__(self,nombre,cantidad,tiempo_pedido):
      self.nombre=nombre

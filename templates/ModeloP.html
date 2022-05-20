@@ -11,7 +11,7 @@
             <div>
               <label 
                 >Demanda:
-                <input type="text" name="demanda" />
+                <input type="text" name="demanda" required/>
               </label>
             </div>
             <div>
@@ -30,31 +30,31 @@
            <div class="field">
             <label>
               Desviacion Estandar durante el plazo(%):
-              <input type="text" name="desviacion"  id="CDesvEstandar" enable="enabled"/>
+              <input type="text" name="desviacion" required  id="CDesvEstandar" enable="enabled"/>
               <input type="checkbox" name="" class="chekeado" id="DesvEstandar">
           </div>
            <div class="field">
             <label
               >Nivel de Confianza(%):
-              <input type="text" name="nivel_confianza" />
+              <input type="text" name="nivel_confianza" required/>
             </label>
            </div>
             <div class="field">
             <label
               >Periodo de Revisión:
-              <input type="text" name="periodo_revision"/>
+              <input type="text" name="periodo_revision " required/>
             </label>
            </div>
            <div class="field">
             <label
               >Tiempo de Entrega:
-              <input type="text" name="tiempo_entrega"/>
+              <input type="text" name="tiempo_entrega" required/>
             </label>
            </div>
             <div class="field">
             <label
               >Inventario Inicial:
-              <input type="text"  name="inventario"/>
+              <input type="text"  name="inventario" required/>
             </label>
            </div>
           <div class="fiel_btn">
@@ -67,7 +67,7 @@
           <thead>
             <tr>
               <th>Unidades Optimas</th>
-              <th>Analisis</th>
+             <th>Stock Seguridad</th>
               
             </tr>
           </thead>
@@ -75,14 +75,16 @@
             <td>
               {{calculo}}
             </td>
-          <td>{{resumen}}</td>
+            <td>{{stock}}</td>
+        
           </tbody>
         </table>
        </div>
        <div class="dialog">
          <div>
-           Dialogo
+           Analisis
          </div>
+         <p>{{resumen}}</p>
        </div>
       </div>
       </div>
