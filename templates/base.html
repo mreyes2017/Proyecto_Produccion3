@@ -12,20 +12,29 @@
     <header>
       <div class="logo">
         <a href="/">
-          <img class="logo_inner" src="/static/img/logo_1.jpg" alt="Logo Piltover" />
+          <img
+            class="logo_inner"
+            src="/static/img/logo_1.jpg"
+            alt="Logo Piltover"
+          />
         </a>
       </div>
       <div class="search">
         <div class="ul_search">
           <ul>
             {% if session.user_id %}
-            
-            <li><a href="/" class="danger"> Bienvenido <br> {{session.nombre}}</a></li>
+
+            <li class="photo_profile">
+              <a href="/" class="danger"> {{session.nombre}}</a>
+              <div class="profile">
+                <img src="/static/img/oliver_img.jpeg" alt="" />
+              </div>
+            </li>
             <li><a href="/logout" class="button">Logout</a></li>
             {% else %}
             <li><a href="/login" class="button">Login</a></li>
             <li><a href="/login" class="button">Sing Up</a></li>
-            
+
             {% endif %}
           </ul>
         </div>
@@ -44,7 +53,7 @@
         </div>
       </div>
     </header>
-    <br>
+    <br />
     {% block body %} {% endblock %}
 
     <footer>
@@ -71,13 +80,18 @@
       </div>
       <div class="card_info" style="border-right: 1px solid var(--color-black)">
         <img src="" alt="" class="image_info" />
+        <span>Oscar Arauz</span>
+        <p>Tester<br />Software</p>
       </div>
+
       <div class="card_info">
         <img
           src="../static/img/pexels-photo-6169678.jpeg"
           alt=""
           class="image_info"
         />
+        <span>Maynor Cruz</span>
+        <p>Tester<br />Software</p>
       </div>
     </footer>
     <script src="/static/script.js"></script>

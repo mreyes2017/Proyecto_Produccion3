@@ -63,6 +63,29 @@ header {
   font-weight: 600;
   color: var(--color-logo);
 }
+
+.photo_profile {
+  display: flex;
+  gap: 10px;
+}
+.photo_profile > a {
+  display: flex;
+  align-items: center;
+}
+
+.profile {
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+}
+
+.profile img {
+  object-fit: cover;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+}
+
 .search {
   display: flex;
   justify-content: space-evenly;
@@ -271,8 +294,7 @@ P {
   text-align: center;
 }
 
-.danger
-{
+.danger {
   color: var(--color-logo);
   text-align: center;
 }
