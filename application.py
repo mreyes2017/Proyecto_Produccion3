@@ -7,6 +7,7 @@ from werkzeug.security import check_password_hash, generate_password_hash
 from helpers import apology, login_required
 from clases.q import *
 from clases.ROP import *
+from clases.p import *
 
 app = Flask(__name__)
 
@@ -161,8 +162,11 @@ def modelop():
       periodo= request.form.get("periodo_revision")
       tiempo= request.form.get("tiempo_entrega")
       inventario= request.form.get("inventario")
-
-      return render_template("ModeloP.html",demanda=demanda,desviacion=desviacion,nivel=nivel,periodo=periodo,tiempo=tiempo,inventario=inventario)
+      
+      p = pr(int(demanda),int(desviacion),int(periodo),int(tiempo),int(inventario),int(nivel))
+      z = p.calcular_z()
+      calculo = p.calcular_p()
+      return render_template("ModeloP.html",calculo=calculo,resumen=" La cantidad óptima para pedir del producto es de "+str(calculo)+" Unidades con un tiempo de entrega de "+str(tiempo)+"días")
     else:
      return render_template("ModeloP.html")
 

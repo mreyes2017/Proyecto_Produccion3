@@ -30,12 +30,12 @@
            <div class="field">
             <label>
               Desviacion Estandar durante el plazo(%):
-              <input type="text" name="desviacion"  id="CDesvEstandar" disabled="disabled"/>
+              <input type="text" name="desviacion"  id="CDesvEstandar" enable="enabled"/>
               <input type="checkbox" name="" class="chekeado" id="DesvEstandar">
           </div>
            <div class="field">
             <label
-              >Nivel de Confianza:
+              >Nivel de Confianza(%):
               <input type="text" name="nivel_confianza" />
             </label>
            </div>
@@ -67,12 +67,15 @@
           <thead>
             <tr>
               <th>Unidades Optimas</th>
-              <th>Punto de Reorden</th>
-              <th>Costo Total</th>
+              <th>Analisis</th>
+              
             </tr>
           </thead>
           <tbody>
-         
+            <td>
+              {{calculo}}
+            </td>
+          <td>{{resumen}}</td>
           </tbody>
         </table>
        </div>

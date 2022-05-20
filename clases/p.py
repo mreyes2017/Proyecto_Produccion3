@@ -1,23 +1,29 @@
-from asyncio.windows_events import INFINITE
-from math import sqrt
+from cmath import sqrt
 from statistics import NormalDist
-
+from math import *
 class pr:
-    def __init__(self,demanda,desviacion,periodo,plazo,inventario):
+    def __init__(self,demanda,desviacion,periodo,plazo,inventario,nivel):
         self.demanda = demanda
         self.desviacion=desviacion
         self.periodo=periodo
         self.plazo=plazo
         self.inventario=inventario
-
+        self.nivel=nivel
+    
+    def calcular_z(self):
+     self.z = round(NormalDist().inv_cdf(((self.nivel)/100)),4)
+     return int(self.z)
+     
     def calcular_p(self):
-        #costo_almacen_decimal = float(self.costo_almacen / 100)
-      #  q = sqrt((2*float(self.demanda) * float(self.costo_pedir)) / (float(costo_almacen_decimal) * float(self.costo_compra)))
-     #   return  s=NormalDist(mu=10, sigma=19.89)
-     # sigma = math.sqrt((p*(1-p))/(n))
-      z = round((10 - 19.89) / float(self.desviacion), 2)
-      return z
+     x = round(((float(self.demanda)*(float(self.periodo+self.plazo)))+(float(self.z)*(float(self.desviacion)*sqrt(float(self.periodo)+float(self.plazo))))-float(self.inventario)))
+     return x
+  
 
-p= pr(5,12,3,5,4)
-o=p.calcular_p
+
+#prueba z
+s = pr(10,3,30,14,150,98)
+o = s.calcular_z()
+k = s.calcular_p()
+
 print(o)
+print(k)
