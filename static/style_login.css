@@ -168,6 +168,7 @@ body {
   cursor: pointer;
   transition: all 0.3s ease;
   text-align: center;
+  color: #fff;
 }
 
 .btn:hover {
