@@ -1,7 +1,9 @@
+from lib2to3.pytree import convert
 from cs50 import SQL
 from flask import Flask, flash, redirect, render_template, request, session,url_for
 from flask_session import Session
 from tempfile import mkdtemp
+from sqlalchemy import Integer
 from werkzeug.exceptions import default_exceptions
 from werkzeug.security import check_password_hash, generate_password_hash
 from helpers import apology, login_required
@@ -120,6 +122,8 @@ def register():
 def template_test():
     return render_template('index.html')
 
+
+
 @app.route("/modeloQ.html", methods=["GET","POST"])
 def modeloq():
     if request.method == "POST":
@@ -174,9 +178,29 @@ def modelop():
     else:
      return render_template("ModeloP.html")
 
-@app.route("/lote_por_lote.html")
+@app.route("/lote_por_lote.html", methods=["GET","POST"])
 def modelol4l():
-    return render_template("lote_por_lote.html")
+    if request.method == "POST": 
+   
+     x = request.form.get("cantidad_semanas") 
+     
+     demanda= [x]
+     for i in range(len(demanda)):
+         demanda[i]= request.form.get("demanda")
+         print(demanda[i])
+     return render_template("lote_por_lote.html", x = int(x or 0))
+     #se supone que estoy en el otro formulario xd
+    elif request.method == "GET":
+     demanda= []
+     for i in range(len(demanda)):
+         demanda[i]= request.form.get("demanda ['+i+'] ")
+         print(demanda[i])
+          
+    
+     costo_pieza=request.form.get("costo_pieza")
+     return render_template("/lote_por_lote.html",costo_pieza=costo_pieza)
+    else:
+     return render_template("/lote_por_lote.html")
 
 @app.route("/cantidad_pedido_economica.html")
 def modeloeoq():
