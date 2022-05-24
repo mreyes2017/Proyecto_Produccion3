@@ -1,8 +1,4 @@
-<link
-  rel="stylesheet"
-  type="text/css"
-  href="{{ url_for('static',filename='lote_por_lote.css') }}"
-/>
+<link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='lote_por_lote.css') }}" />
 {% extends 'base.html' %} {% block body %}
 
 <main>
@@ -11,57 +7,38 @@
     <form action="/lote_por_lote.html" method="post" id="prueba">
       <div class="field">
         <label for="">
-          Digite la cantidad de semanas a evaluar:  </label>
-          <input type="number" id="cantidad_semanas" name="cantidad_semanas" required/>
+          Digite la cantidad de semanas a evaluar: </label>
+        <input type="number" id="cantidad_semanas" name="cantidad_semanas" required />
       </div>
-      <div class='field'><label>Digite la demanda:</label><input type='number' id='demanda' name='demanda' disabled="disabled" required/></div>
+      <div class='field'>
+        <label>Digite la demanda:</label>
+        <input type='number' id='demanda[]' name='demanda' disabled="disabled" required />
+        </div>
+      <div class="field">
+        <label>
+          Costo de la Pieza:</label>
+          <input type="text" name="costo_pieza" />
+      </div>
+
+      <div class="field">
+        <label for="">
+          Costo de pedido:</label>
+          <input type="text"  />
+        
+      </div>
+      <div class="field">
+        <label for="">
+          Costo de llevar a inventario: </label>
+          <input type="text" />
+       
+      </div>
+
       <div class="fiel_btn">
         <button class="btn" type="submit" id="calcular">Calcular</button>
       </div>
     </form>
   </div>
-  
-  <div class="formu">
-    <div class="header_form">Lote por Lote</div>
-    <form action="/lote_por_lote.html" method="get">
-      <div class="fieds">
-       
-        <label for="">
-        
-        <input type="number" name="demanda['+{{i}}+'}]"  required/>
-        <br>
 
-      </div>
-      
-      <div class="fields">
-        <label>
-          Costo de la Pieza:
-
-          <input type="text" name="costo_pieza" required/>
-
-          <input type="text" required />
-
-        </label>
-      </div>
-     
-      <div class="fieds">
-        <label for="">
-          Costo de pedido:
-          <input type="text" required />
-        </label>
-      </div>
-      <div class="fields">
-        <label for="">
-          Costo de llevar a inventario:
-          <input type="text" required />
-        </label>
-      </div>
-
-      <div class="fiel_btn">
-        <button class="btn" type="submit">Calcular</button>
-      </div>
-    </form>
-  </div>
   <div class="table-wra">
     <table>
       <thead>
@@ -76,7 +53,7 @@
         </tr>
       </thead>
       <tbody>
-           <td>{{prueba}}</td>
+        <td>{{prueba}}</td>
       </tbody>
     </table>
   </div>
