@@ -6,32 +6,15 @@
 {% extends 'base.html' %} {% block body %}
 
 <main>
-  <div class="formu">
+  <div class="formu" id="formulario">
     <div class="header_form">Lote por Lote</div>
     <form action="/lote_por_lote.html" method="post">
-      <div>
+      <div class="field">
         <label for="">
-
-          Digite la cantidad de semanas a evaluar: <input type="number" id="cantidad_semanas" name="cantidad_semanas" required/>
-
-          Digite la cantidad de semanas a evaluar:
-          <input type="number" name="cantidad_semanas" required />
-        </label>
+          Digite la cantidad de semanas a evaluar:  </label>
+          <input type="number" id="cantidad_semanas" name="cantidad_semanas" required/>
       </div>
-
-      {% for i in range(1,3) -%}
-      <input type="text" disabled="disabled" name="demanda" required />
-      {% endfor -%}
-      <div>
-        <label for="">
-          Digite la demanda en la semana:
-          <input type="text" disabled="disabled" name="demanda" required />
-        </label>
-        <label for="">
-          <input type="button" class="btn" value="Ingresar" />
-
-        </label>
-      </div>
+     
       <div class="fiel_btn">
         <button class="btn" type="submit" id="calcular">Calcular</button>
       </div>
@@ -42,12 +25,12 @@
     <div class="header_form">Lote por Lote</div>
     <form action="/lote_por_lote.html" method="get">
       <div class="fieds">
-        {% for i in range(0,x) -%}
+       
         <label for="">
-          Ingrese la demanda en la semana {{i+1}}: </label>
+        
         <input type="number" name="demanda['+{{i}}+'}]"  required/>
         <br>
-         {% endfor -%}  
+
       </div>
       
       <div class="fields">
@@ -98,17 +81,5 @@
     </table>
   </div>
 </main>
-
-<script> 
- // $("#cantidad_semanas").keyup(function(event) {
-   //   if (event.keyCode === 13) {
-     //     alert("xd");
-      //}
-  //});
-
- $("#calcular").click(function() {
-    
-  });
-</script> 
-
+<script src="../static/l4l.js"></script>
 {% endblock %}
