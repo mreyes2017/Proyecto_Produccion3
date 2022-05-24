@@ -110,6 +110,10 @@ input:focus {
   border: 1px solid white;
 }
 
+input[type="checkbox"] {
+  accent-color: #4070f4;
+}
+
 .chekeado {
   position: absolute;
   margin-block-start: 4px;
@@ -120,7 +124,6 @@ input:focus {
 }
 .chekeado:checked {
   transform: scale(1.2);
-  background: blue;
 }
 #checkeadoCostodePedir:disabled {
   background-color: var(--color-table-tr);

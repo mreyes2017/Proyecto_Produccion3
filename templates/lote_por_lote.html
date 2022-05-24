@@ -11,7 +11,25 @@
     <form action="/lote_por_lote.html" method="post">
       <div>
         <label for="">
+
           Digite la cantidad de semanas a evaluar: <input type="number" id="cantidad_semanas" name="cantidad_semanas" required/>
+
+          Digite la cantidad de semanas a evaluar:
+          <input type="number" name="cantidad_semanas" required />
+        </label>
+      </div>
+
+      {% for i in range(1,3) -%}
+      <input type="text" disabled="disabled" name="demanda" required />
+      {% endfor -%}
+      <div>
+        <label for="">
+          Digite la demanda en la semana:
+          <input type="text" disabled="disabled" name="demanda" required />
+        </label>
+        <label for="">
+          <input type="button" class="btn" value="Ingresar" />
+
         </label>
       </div>
       <div class="fiel_btn">
@@ -35,23 +53,27 @@
       <div class="fields">
         <label>
           Costo de la Pieza:
+
           <input type="text" name="costo_pieza" required/>
+
+          <input type="text" required />
+
         </label>
       </div>
      
       <div class="fieds">
         <label for="">
           Costo de pedido:
-          <input type="text" required/>
+          <input type="text" required />
         </label>
       </div>
       <div class="fields">
         <label for="">
           Costo de llevar a inventario:
-          <input type="text"  required/>
+          <input type="text" required />
         </label>
       </div>
-    
+
       <div class="fiel_btn">
         <button class="btn" type="submit">Calcular</button>
       </div>

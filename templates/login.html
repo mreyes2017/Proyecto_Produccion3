@@ -5,30 +5,35 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script src="https://kit.fontawesome.com/afd8869c61.js"></script>
-    <link rel="stylesheet" href="{{ url_for('static',filename='style.css') }}" />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static',filename='style.css') }}"
+    />
     <link
       rel="stylesheet"
       href="https://unicons.iconscout.com/release/v4.0.0/css/line.css"
     />
-    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='style_login.css') }}" />
-   
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{{ url_for('static',filename='style_login.css') }}"
+    />
   </head>
   <body>
     <header>
       <div class="logo">
         <a href="/">
-        <img
-          class="logo_inner"
-          src="../static/img/logo_1.jpg"
-          alt="Logo Piltover"
+          <img
+            class="logo_inner"
+            src="../static/img/logo_1.jpg"
+            alt="Logo Piltover"
         /></a>
       </div>
-      
+
       <div class="search">
         <div class="ul_search">
           <ul>
             <li><a href="/login" class="button">Login</a></li>
-            <li><a href="/login" class="button">Sing Up</a></li>
           </ul>
         </div>
         <div class="mode">
@@ -55,7 +60,12 @@
 
               <form action="/login" method="post">
                 <div class="input-field">
-                  <input type="text"  name="username" placeholder="Enter your email" required />
+                  <input
+                    type="text"
+                    name="username"
+                    placeholder="Enter your email"
+                    required
+                  />
                   <i class="uil uil-envelope icon"></i>
                 </div>
                 <div class="input-field">
@@ -79,7 +89,9 @@
                 </div>
 
                 <div>
-                  <button type="submit" class="input-field btn">Login Now</button>
+                  <button type="submit" class="input-field btn">
+                    Login Now
+                  </button>
                 </div>
               </form>
 
@@ -97,11 +109,21 @@
 
               <form action="/register" method="post">
                 <div class="input-field">
-                  <input name="nombre1" type="text" placeholder="Enter your name" required />
+                  <input
+                    name="nombre1"
+                    type="text"
+                    placeholder="Enter your name"
+                    required
+                  />
                   <i class="uil uil-user"></i>
                 </div>
                 <div class="input-field">
-                  <input  name="username" type="email" placeholder="Enter your email" required />
+                  <input
+                    name="username"
+                    type="email"
+                    placeholder="Enter your email"
+                    required
+                  />
                   <i class="uil uil-envelope icon"></i>
                 </div>
                 <div class="input-field">
@@ -130,18 +152,17 @@
                     <input type="checkbox" id="sigCheck" />
                     <label for="sigCheck" class="text">Remember me</label>
                   </div>
-
-                  <a href="#" class="text">Forgot password?</a>
                 </div>
 
                 <div class="">
-                  <button type="submit" class="input-field btn">Register Now</button>
+                  <button type="submit" class="input-field btn">
+                    Register Now
+                  </button>
                 </div>
               </form>
 
               <div class="login-signup">
-                <span class="text"
-                  >Not a member?
+                <span class="text">
                   <a href="#" class="text login-link">Login now</a>
                 </span>
               </div>
@@ -150,7 +171,7 @@
         </div>
       </div>
     </main>
-   
+
     <script src="{{ url_for('static',filename='script.js') }}"></script>
     <script src="{{ url_for('static',filename='script_login.js') }}"></script>
   </body>
