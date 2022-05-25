@@ -1,13 +1,15 @@
 const mode = document.querySelector(".ball");
 const imgLog = document.querySelector(".logo_inner");
 const imgmode = document.querySelector(".modeSN");
+
 const inputs = document.querySelector("#checkeadoCostodePedir");
 const cuadro = document.querySelector("#checkCostodePedir");
-//const inputsCosto = document.querySelector("#checkeadoTasa");
-//const cuadroTasa = document.querySelector("#cantidad_semanas");
+const inputsCosto = document.querySelector("#checkeadoTasa");
+const cuadroTasa = document.querySelector("#cantidad_semanas");
 const inputsDesv = document.querySelector("#CDesvEstandar");
 const cuadroDesv = document.querySelector("#DesvEstandar");
 //const xd=document.querySelector("cantidad_semanas")
+
 
 
 mode.addEventListener("click", function () {
@@ -40,11 +42,12 @@ if (localStorage.getItem("dark-mode") === "true") {
 } else {
   document.body.classList.remove("dark");
 }
+
 /*
 cuadro.addEventListener("click", function () {
   inputs.toggleAttribute("disabled");
 });*/
-/*
+
 cuadroTasa.addEventListener("click", function () {
   inputsCosto.toggleAttribute("disabled");
 });
@@ -53,3 +56,4 @@ cuadroDesv.addEventListener("click", function () {
   inputsDesv.toggleAttribute("disabled");
 });
 */
+

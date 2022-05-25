@@ -10,6 +10,7 @@ from helpers import apology, login_required
 from clases.q import *
 from clases.ROP import *
 from clases.p import *
+from clases.l4l2 import *
 
 app = Flask(__name__)
 
@@ -180,6 +181,7 @@ def modelop():
 
 @app.route("/lote_por_lote.html", methods=["GET","POST"])
 def modelol4l():
+
     if request.method == "POST": 
    
      x = request.form.get("cantidad_semanas") 
@@ -201,6 +203,21 @@ def modelol4l():
      return render_template("/lote_por_lote.html",costo_pieza=costo_pieza)
     else:
      return render_template("/lote_por_lote.html")
+
+    if request.method == "POST":
+        nsemanas = request.form.get("cantidad_semanas")
+        datos = lista_float(request.form.get("datos"))
+        print(datos)
+        costo_pieza = request.form.get("costo_pieza")
+        costo_pedir = request.form.get("costo_pedir")
+        tasa = request.form.get("tasa")
+        l4ll = l4l(nsemanas,datos,float(costo_pieza),float(costo_pedir),float(tasa))
+        resultado = l4ll.ltotal()
+        print(resultado)
+        return render_template("lote_por_lote.html",resultado = resultado)
+    else:
+        return render_template("lote_por_lote.html")
+
 
 @app.route("/cantidad_pedido_economica.html")
 def modeloeoq():
