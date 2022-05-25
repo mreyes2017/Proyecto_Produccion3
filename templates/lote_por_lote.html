@@ -16,43 +16,28 @@
           <input type="number" name="cantidad_semanas" required />
         </label>
       </div>
-
-      {% for i in range(1,3) -%}
-      <input type="text" disabled="disabled" name="demanda" required />
-      {% endfor -%}
-      <div>
-        <label for="">
-          Digite la demanda en la semana:
-          <input type="text" disabled="disabled" name="demanda" required />
-        </label>
-        <label for="">
-          <input type="button" class="btn" value="Ingresar" />
-        </label>
-      </div>
-      <div class="fiel_btn">
-        <button class="btn" type="submit">Calcular</button>
-      </div>
-    </form>
-  </div>
-  <div class="formu">
-    <div class="header_form">Lote por Lote</div>
-    <form action="/lote_por_lote.html" method="post">
       <div class="fields">
         <label>
           Costo de la Pieza:
-          <input type="text" required />
+          <input name ="costo_pieza" type="text" required />
+        </label>
+      </div>
+      <div class="fields">
+        <label>
+          ingrese la demanda de cada semana separado por coma:
+          <input name = "datos" type="text" required />
         </label>
       </div>
       <div class="fieds">
         <label for="">
           Costo de pedido:
-          <input type="text" required />
+          <input name="costo_pedir" type="text" required />
         </label>
       </div>
       <div class="fields">
         <label for="">
-          Costo de llevar a inventario:
-          <input type="text" required />
+          Costo de llevar a inventario(tasa)%:
+          <input name="tasa" type="text" required />
         </label>
       </div>
 
@@ -68,13 +53,27 @@
           <th>Semanas</th>
           <th>Necesidades Netas</th>
           <th>Cantidad de Producción</th>
-          <th>Inventario Inicial</th>
+          <th>Inventario</th>
           <th>Costo de llevar al inventario</th>
           <th>Costo de preparacion</th>
           <th>Costo Total</th>
         </tr>
       </thead>
-      <tbody></tbody>
+     
+      <tbody>
+       <tr>
+        {%for resultados in resultado.items()%}
+        <td>{{resultados[1]["semana"]}}</td>
+        <td>{{resultados[1]["demanda"]}}</td>
+        <td>{{resultados[1]["producto"]}}</td>
+        <td>{{resultados[1]["inventario"]}}</td>
+        <td>{{resultados[1]["h"]}}</td>
+        <td>{{resultados[1]["costo_pedir"]}}</td>
+        <td>{{resultados[1]["costo_total"]}}</td> 
+      </tr>
+      {%endfor%}
+      </tbody>
+      
     </table>
   </div>
 </main>
