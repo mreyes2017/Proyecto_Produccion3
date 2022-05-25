@@ -1,6 +1,6 @@
 from lib2to3.pytree import convert
 from cs50 import SQL
-from flask import Flask, flash, redirect, render_template, request, session,url_for
+from flask import Flask, flash, redirect, render_template, request, session, url_for
 from flask_session import Session
 from tempfile import mkdtemp
 from sqlalchemy import Integer
@@ -13,6 +13,7 @@ from clases.p import *
 from clases.l4l2 import *
 
 app = Flask(__name__)
+
 
 @app.after_request
 def after_request(response):
@@ -86,37 +87,31 @@ def register():
         user = request.form.get("username")
         nombre1 = request.form.get("nombre1")
         ps = request.form.get("password")
-        psa =request.form.get("Cpassword")
+        psa = request.form.get("Cpassword")
         email = request.form.get("username")
 
-
-        userE = db.execute("SELECT username FROM users WHERE username = :username",username=user)
-
+        userE = db.execute(
+            "SELECT username FROM users WHERE username = :username", username=user)
 
         if not user:
-            return apology("El campo usuario esta vacio",400 )
+            return apology("El campo usuario esta vacio", 400)
         elif not nombre1:
-            return apology("El campo primer nombre esta vacio",400 )
+            return apology("El campo primer nombre esta vacio", 400)
         elif not email:
-            return apology("El campo correo esta vacio",400 )
+            return apology("El campo correo esta vacio", 400)
         elif not ps:
-            return apology("El campo password esta vacio",400 )
+            return apology("El campo password esta vacio", 400)
         elif not psa:
-            return apology("El campo password Again esta vacio",400 )
+            return apology("El campo password Again esta vacio", 400)
         elif ps != psa:
-            return apology("Las contraseñas no coinciden",400 )
-        elif not userE :
-            rows = db.execute("INSERT INTO users (id,username,hash,nombre1,nombre2,apellido1,apellido2,email) values (NULL,:username,:hashh,:nombre1,:nombre2,:apellido1,:apellido2,:email) ",username = user, hashh=generate_password_hash(ps),nombre1=nombre1,nombre2="nombre2",apellido1="apellido1",apellido2="apellido2",email=email )
+            return apology("Las contraseñas no coinciden", 400)
+        elif not userE:
+            rows = db.execute("INSERT INTO users (id,username,hash,nombre1,nombre2,apellido1,apellido2,email) values (NULL,:username,:hashh,:nombre1,:nombre2,:apellido1,:apellido2,:email) ",
+                              username=user, hashh=generate_password_hash(ps), nombre1=nombre1, nombre2="nombre2", apellido1="apellido1", apellido2="apellido2", email=email)
         else:
-            return apology("El usuario ya existe",400 )
-
-
+            return apology("El usuario ya existe", 400)
 
         return redirect("/login")
-    
-
-
-
 
 
 @app.route("/")
@@ -124,102 +119,110 @@ def template_test():
     return render_template('index.html')
 
 
-
-@app.route("/modeloQ.html", methods=["GET","POST"])
+@app.route("/modeloQ.html", methods=["GET", "POST"])
 def modeloq():
     if request.method == "POST":
         demanda = request.form.get("demanda")
-        #print(demanda)
+        # print(demanda)
         Tdemanda = request.form.get("Tdemanda")
-        #print(Tdemanda)
+        # print(Tdemanda)
         costo_pedir = request.form.get("costo_pedir")
-        #print(costo_pedir)
+        # print(costo_pedir)
         costo_almacen = request.form.get("costo_almacen")
-        #print(costo_almacen)
+        # print(costo_almacen)
         costo_compra = request.form.get("costo_compra")
-        #print(costo_compra)
+        # print(costo_compra)
         plazo_entrega = request.form.get("plazo")
-        
+
         tipo_demanda = request.form.get("Tdemanda")
 
-        qt = qr(float(demanda),float(costo_pedir),float(costo_almacen),float(costo_compra),float(tipo_demanda))
-        und_optima = qt.calcular_q() #Imprimir
-        m = n_pedidos(float(demanda),float(und_optima),float(tipo_demanda))
-        np = m.calcula_n_pedidos() #Imprimir
-        o = tiempo_entre_pedidos(float(Tdemanda),float(np))
-        tp = o.tiempo_entre_pedido() #Imprimir
-        my = costo_total(float(demanda),float(costo_pedir),float(costo_almacen),float(costo_compra),float(und_optima),float(tipo_demanda))
-        ct = my.c_total() #Imprimir
-        ro = ROP(float(demanda),float(plazo_entrega),float(tipo_demanda))
-        calculo=ro.calcular_rop()
+        qt = qr(float(demanda), float(costo_pedir), float(
+            costo_almacen), float(costo_compra), float(tipo_demanda))
+        und_optima = qt.calcular_q()  # Imprimir
+        m = n_pedidos(float(demanda), float(und_optima), float(tipo_demanda))
+        np = m.calcula_n_pedidos()  # Imprimir
+        o = tiempo_entre_pedidos(float(Tdemanda), float(np))
+        tp = o.tiempo_entre_pedido()  # Imprimir
+        my = costo_total(float(demanda), float(costo_pedir), float(
+            costo_almacen), float(costo_compra), float(und_optima), float(tipo_demanda))
+        ct = my.c_total()  # Imprimir
+        ro = ROP(float(demanda), float(plazo_entrega), float(tipo_demanda))
+        calculo = ro.calcular_rop()
 
-        return render_template("modeloQ.html", und_optima = und_optima, np = np, tp = tp, ct = ct ,calculo=calculo)
+        return render_template("modeloQ.html", und_optima=und_optima, np=np, tp=tp, ct=ct, calculo=calculo)
     else:
         return render_template("modeloQ.html")
+
 
 @app.route("/ModeloSS.html")
 def modeloss():
     return render_template("ModeloSS.html")
 
-@app.route("/ModeloP.html", methods=["GET","POST"])
+
+@app.route("/ModeloP.html", methods=["GET", "POST"])
 def modelop():
     if request.method == "POST":
-      demanda = request.form.get("demanda")
-      desviacion = request.form.get("desviacion")
-      nivel= request.form.get("nivel_confianza")
-      periodo= request.form.get("periodo_revision")
-      tiempo= request.form.get("tiempo_entrega")
-      inventario= request.form.get("inventario")
-      
-      p = pr(int(demanda),int(desviacion),int(periodo),int(tiempo),int(inventario),int(nivel))
-      z = p.calcular_z()
-      calculo = p.calcular_p()
-      o = p.inventario_seguridad()
-      return render_template("ModeloP.html",calculo=calculo,resumen=" La cantidad óptima para pedir del producto es de "+str(calculo)+" Unidades ademas, se recomienda hacer un nuevo pedido al proveedor cuando las existencias lleguen hasta "+str(o)+" Unidades",stock=o)
-    else:
-     return render_template("ModeloP.html")
+        demanda = request.form.get("demanda")
+        desviacion = request.form.get("desviacion")
+        nivel = request.form.get("nivel_confianza")
+        periodo = request.form.get("periodo_revision")
+        tiempo = request.form.get("tiempo_entrega")
+        inventario = request.form.get("inventario")
 
-@app.route("/lote_por_lote.html", methods=["GET","POST"])
-def modelol4l():
+        p = pr(int(demanda), int(desviacion), int(periodo),
+               int(tiempo), int(inventario), int(nivel))
+        z = p.calcular_z()
+        calculo = p.calcular_p()
+        o = p.inventario_seguridad()
+        return render_template("ModeloP.html", calculo=calculo, resumen=" La cantidad óptima para pedir del producto es de "+str(calculo)+" Unidades ademas, se recomienda hacer un nuevo pedido al proveedor cuando las existencias lleguen hasta "+str(o)+" Unidades", stock=o)
+    else:
+        return render_template("ModeloP.html")
+
+
+@app.route("/lote_por_lote.html", methods=["GET", "POST"])
+def lote_por_lote():
     if request.method == "POST":
         nsemanas = request.form.get("cantidad_semanas")
-        datos = lista_float(request.form.get("datos"))
-        print(datos)
-        costo_pieza = request.form.get("costo_pieza")
-        costo_pedir = request.form.get("costo_pedir")
+        datos =lista_float(request.form.get("datos"))
+        costo_pieza =request.form.get("costo_pieza")
+        costo_pedir =request.form.get("costo_pedir")
         tasa = request.form.get("tasa")
-        l4ll = l4l(nsemanas,datos,float(costo_pieza),float(costo_pedir),float(tasa))
+        l4ll =l4l(nsemanas,datos,float(costo_pieza),float(costo_pedir),float(tasa))
         resultado = l4ll.ltotal()
         print(resultado)
-        return render_template("lote_por_lote.html", resultado = resultado)
+        return render_template("lote_por_lote.html",resultado=resultado)
     else:
         return render_template("lote_por_lote.html")
-
 
 @app.route("/cantidad_pedido_economica.html")
 def modeloeoq():
     return render_template("cantidad_pedido_economica.html")
 
-@app.route("/costo_total_minimo.html")
+
+@app.route("/LTC.html")
 def modeloctm():
-    return render_template("costo_total_minimo.html")
+    return render_template("LTC.html")
+
 
 @app.route("/costo_unitario_minimo.html")
 def modelocum():
     return render_template("costo_unitario_minimo.html")
 
+
 @app.route("/Persecucion.html")
 def modeloperse():
     return render_template("Persecucion.html")
+
 
 @app.route("/PlanAgregado.html")
 def modeloagre():
     return render_template("PlanAgregado.html")
 
+
 if __name__ == '__main__':
     app.run(debug=True)
-#def index():
-    #if method.request == "POST":
-     #   return "<p>Hello, World!</p>"
-    #else:
-     #    return "<p>Hello, World!</p>"
+# def index():
+    # if method.request == "POST":
+    #   return "<p>Hello, World!</p>"
+    # else:
+    #    return "<p>Hello, World!</p>"
