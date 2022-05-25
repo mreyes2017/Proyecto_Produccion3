@@ -26,14 +26,14 @@ class l4l:
             contador += 1
         return tabla
 
-prueba = l4l(8,[50,60,70,60,95,75,60,55],10,47,0.05)
+##prueba = l4l(8,[50,60,70,60,95,75,60,55],10,47,0.05)
  
 
-def lista_float(string):
-    b = string.split(",")
-    return b
+    def lista_float(string):
+     b = string.split(",")
+     return b
 
-resultado = prueba.ltotal()
+#resultado = prueba.ltotal()
 
 
 #print(resultado[str(1)])

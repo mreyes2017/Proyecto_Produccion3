@@ -181,29 +181,6 @@ def modelop():
 
 @app.route("/lote_por_lote.html", methods=["GET","POST"])
 def modelol4l():
-
-    if request.method == "POST": 
-   
-     x = request.form.get("cantidad_semanas") 
-     
-     demanda= [x]
-     for i in range(len(demanda)):
-         demanda[i]= request.form.get("demanda")
-         print(demanda[i])
-     return render_template("lote_por_lote.html", x = int(x or 0))
-     #se supone que estoy en el otro formulario xd
-    elif request.method == "GET":
-     demanda= []
-     for i in range(len(demanda)):
-         demanda[i]= request.form.get("demanda ['+i+'] ")
-         print(demanda[i])
-          
-    
-     costo_pieza=request.form.get("costo_pieza")
-     return render_template("/lote_por_lote.html",costo_pieza=costo_pieza)
-    else:
-     return render_template("/lote_por_lote.html")
-
     if request.method == "POST":
         nsemanas = request.form.get("cantidad_semanas")
         datos = lista_float(request.form.get("datos"))
@@ -214,7 +191,7 @@ def modelol4l():
         l4ll = l4l(nsemanas,datos,float(costo_pieza),float(costo_pedir),float(tasa))
         resultado = l4ll.ltotal()
         print(resultado)
-        return render_template("lote_por_lote.html",resultado = resultado)
+        return render_template("lote_por_lote.html", resultado = resultado)
     else:
         return render_template("lote_por_lote.html")
 

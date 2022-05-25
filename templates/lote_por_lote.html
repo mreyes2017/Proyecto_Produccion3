@@ -1,79 +1,45 @@
-<link
-  rel="stylesheet"
-  type="text/css"
-  href="{{ url_for('static',filename='lote_por_lote.css') }}"
-/>
+<link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='lote_por_lote.css') }}" />
 {% extends 'base.html' %} {% block body %}
 
 <main>
   <div class="formu">
     <div class="header_form">Lote por Lote</div>
-    <form action="/lote_por_lote.html" method="post">
+    <form action="/lote_por_lote.html" method="POST">
       <div>
         <label for="">
-
-          Digite la cantidad de semanas a evaluar: <input type="number" id="cantidad_semanas" name="cantidad_semanas" required/>
-        </label>
+          Digite la cantidad de semanas a evaluar: </label>
+        <input type="number" name="cantidad_semanas" required />
       </div>
+      <div class="fieds">
+        <label for="">
+          Ingrese la demanda de cada semana separado por coma: </label>
+        <input type="number" name="datos" required />
+        <br>
+      </div>
+      <div class="fields">
+        <label>
+          Costo de la Pieza:</label>
+        <input type="text" name="costo_pieza" required />
+      </div>
+      <div class="fieds">
+        <label for="">
+          Costo de pedido: </label>
+        <input name="costo_pedir" type="text" required />
+
+      </div>
+      <div class="fieds">
+        <label for="">
+          Costo de llevar a inventario(tasa)%: </label>
+        <input name="costo_pedir" type="text" name="tasa" required />
+
+      </div>
+
       <div class="fiel_btn">
         <button class="btn" type="submit" id="calcular">Calcular</button>
       </div>
     </form>
   </div>
-  
-  <div class="formu">
-    <div class="header_form">Lote por Lote</div>
-    <form action="/lote_por_lote.html" method="get">
-      <div class="fieds">
-        {% for i in range(0,x) -%}
-        <label for="">
-          Ingrese la demanda en la semana {{i+1}}: </label>
-        <input type="number" name="demanda['+{{i}}+'}]"  required/>
-        <br>
-         {% endfor -%}  
-      </div>
-      
-      <div class="fields">
-        <label>
-          Costo de la Pieza:
-          <input type="text" name="costo_pieza" required/>
 
-          Digite la cantidad de semanas a evaluar:
-          <input type="number" name="cantidad_semanas" required />
-        </label>
-      </div>
-      <div class="fields">
-        <label>
-          Costo de la Pieza:
-          <input name ="costo_pieza" type="text" required />
-        </label>
-      </div>
-      <div class="fields">
-        <label>
-          ingrese la demanda de cada semana separado por coma:
-          <input name = "datos" type="text" required />
-
-        </label>
-      </div>
-     
-      <div class="fieds">
-        <label for="">
-          Costo de pedido:
-          <input name="costo_pedir" type="text" required />
-        </label>
-      </div>
-      <div class="fields">
-        <label for="">
-          Costo de llevar a inventario(tasa)%:
-          <input name="tasa" type="text" required />
-        </label>
-      </div>
-
-      <div class="fiel_btn">
-        <button class="btn" type="submit">Calcular</button>
-      </div>
-    </form>
-  </div>
   <div class="table-wra">
     <table>
       <thead>
@@ -89,39 +55,23 @@
       </thead>
 
       <tbody>
-           <td>{{prueba}}</td>
+        <tr>
+          {% for resultados in resultado.items() %}
+          <td>{{resultados[1]["semana"]}}</td>
+          <td>{{resultados[1]["demanda"]}}</td>
+          <td>{{resultados[1]["producto"]}}</td>
+          <td>{{resultados[1]["inventario"]}}</td>
+          <td>{{resultados[1]["h"]}}</td>
+          <td>{{resultados[1]["costo_pedir"]}}</td>
+          <td>{{resultados[1]["costo_total"]}}</td>
+        </tr>
+        {% endfor %}
       </tbody>
 
-     
-      <tbody>
-       <tr>
-        {%for resultados in resultado.items()%}
-        <td>{{resultados[1]["semana"]}}</td>
-        <td>{{resultados[1]["demanda"]}}</td>
-        <td>{{resultados[1]["producto"]}}</td>
-        <td>{{resultados[1]["inventario"]}}</td>
-        <td>{{resultados[1]["h"]}}</td>
-        <td>{{resultados[1]["costo_pedir"]}}</td>
-        <td>{{resultados[1]["costo_total"]}}</td> 
-      </tr>
-      {%endfor%}
-      </tbody>
-      
 
     </table>
   </div>
 </main>
 
-<script> 
- // $("#cantidad_semanas").keyup(function(event) {
-   //   if (event.keyCode === 13) {
-     //     alert("xd");
-      //}
-  //});
-
- $("#calcular").click(function() {
-    
-  });
-</script> 
 
 {% endblock %}
