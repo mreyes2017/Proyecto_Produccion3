@@ -189,7 +189,8 @@ def modelol4l():
         print(resultado)
         return render_template("lote_por_lote.html",resultado = resultado)
     else:
-        return render_template("lote_por_lote.html")
+        resultado = {}
+        return render_template("lote_por_lote.html",resultado = resultado)
 
 @app.route("/cantidad_pedido_economica.html")
 def modeloeoq():
