@@ -12,7 +12,10 @@ class ltc:
         contador = 0
         costo_total = self.costo_pedir
         dem =0
-        h=2
+        t=0
+        v=1
+        o=0
+        l=0
         for x in self.datos:
             dem += float(x)
             tabla[f"{contador + 1}"] = \
@@ -21,17 +24,22 @@ class ltc:
                         "demanda": x, 
                         "calculo del lote": '1-'+f"{contador+1}",
                         "producto": dem,
-                        "h":
-                        
-                        ((float(x)*self.costo_pieza)*self.tasa),
+                        "h":l,
                         "costo_pedir": self.costo_pedir, 
                         "costo_total": costo_total                       
                     }
-            costo_total += self.costo_pedir
-            contador += 1
-            #print(tabla[f"{1}"]["producto"])
-            istOfKeys = list(tabla)
-            print(istOfKeys)
+            
+            t=((dem-float(x))*(self.costo_pieza)*(self.tasa))
+            o=dem-float(x)
+            if(o==0):
+                l=0
+            else:
+             z=(o-tabla[f"{contador+1}"]["demanda"])*(self.costo_pieza)*(self.tasa)
+             l=t+z
+             costo_total = self.costo_pedir+(t/1000)
+             contador += 1
+             print(tabla[f"{1}"]["demanda"])
+             print(l)
         return tabla
         
          
@@ -44,7 +52,7 @@ def lista_float(string):
 resultado = prueba.ltotal()
 
 
-print(resultado[str(3)])
+print(resultado[str(1)])
 
 
       
