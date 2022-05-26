@@ -14,7 +14,7 @@ class ltc:
         dem =0
         h=2
         for x in self.datos:
-            dem += x
+            dem += float(x)
             tabla[f"{contador + 1}"] = \
                     { 
                         "semana": contador + 1,
@@ -23,7 +23,7 @@ class ltc:
                         "producto": dem,
                         "h":
                         
-                        ((x*self.costo_pieza)*self.tasa),
+                        ((float(x)*self.costo_pieza)*self.tasa),
                         "costo_pedir": self.costo_pedir, 
                         "costo_total": costo_total                       
                     }
