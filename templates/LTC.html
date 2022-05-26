@@ -7,7 +7,7 @@
 <main>
   <div class="formu">
     <div class="header_form">Modelo LTC </div>
-    <form action="/ltc.html">
+    <form action="/ltc.html" method="POST">
       <div class="field">
         <label for="">
           Digite la cantidad de semanas a evaluar: </label>
@@ -16,24 +16,24 @@
       <div class="field">
         <label for="">
           Ingrese la demanda de cada semana separado por coma: </label>
-        <input type="number" name="datos" required />
+        <input type="text" name="datos" required />
         <br>
       </div>
       <div class="field">
         <label>
           Costo de la Pieza:</label>
-        <input type="text" name="costo_pieza" required />
+        <input type="number" name="costo_pieza" required />
       </div>
       <div class="field">
         <label for="">
           Costo de pedido: </label>
-        <input name="costo_pedir" type="text" required />
+        <input name="costo_pedir" type="number" required />
 
       </div>
       <div class="field">
         <label for="">
           Costo de llevar a inventario(tasa)%: </label>
-        <input name="costo_pedir" type="text" name="tasa" required />
+        <input name="tasa" type="number" name="tasa" required />
 
       </div>
 
@@ -48,18 +48,28 @@
       <thead>
         <tr>
           <th>Semanas</th>
-          <th>Cantidad Pedida</th>
-          <th>Cantidad de matener inventario</th>
-          <th>Costo de pedido</th>
-          <th>Costo Total</th>
+          <th>demanda</th>
+          <th>calculo del lote</th>
+          <th>producto</th>
+          <th>h</th>
+          <th>costo de pedir (s)</th>
+          <th>costo total</th>
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <td>30</td>
-          <td>10</td>
-          <td>5000</td>
-        </tr>
+       
+          {% for resultados in resultado.items() -%}
+          <tr>
+            <td>{{resultados[1]["semana"]}}</td>
+            <td>{{resultados[1]["demanda"]}}</td>
+            <td>{{resultados[1]["calculo del lote"]}}</td>
+            <td>{{resultados[1]["producto"]}}</td>
+            <td>{{resultados[1]["h"]}}</td>
+            <td>{{resultados[1]["costo_pedir"]}}</td>
+            <td>{{resultados[1]["costo_total"]}}</td>
+          </tr>
+          {%endfor%}
+        
       </tbody>
     </table>
   </div>
