@@ -1,0 +1,94 @@
+
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='modeloP.css') }}" />
+    {% extends 'base.html' %}
+    {% block body %}
+    <main>
+      <div class="main_nav">
+              <div class="formu">
+        <div class="header_form">Cantidad Fija de Pedido</div>
+        <form action="/ModeloP.html" method="post">
+          <div class="field first">
+            <div>
+              <label 
+                >Demanda:
+                <input type="text" name="demanda" required/>
+              </label>
+            </div>
+            <div>
+              <label>
+                Tipo de Demanda:
+                <select name="" id="">
+                  <option value="anual">Anual</option>
+                  <option value="mensual">Mensual</option>
+                  <option value="semanal">Semanal</option>
+                  <option value="diaria">Diaria</option>
+                </select>
+              </label>
+            </div>
+          </div>
+      
+           <div class="field">
+            <label>
+              Desviacion Estandar durante el plazo(%):
+              <input type="text" name="desviacion" required  id="CDesvEstandar" disabled="disabled"/>
+              <input type="checkbox" name="" class="chekeado" id="DesvEstandar">
+          </div>
+           <div class="field">
+            <label
+              >Nivel de Confianza(%):
+              <input type="text" name="nivel_confianza" required/>
+            </label>
+           </div>
+            <div class="field">
+            <label
+              >Periodo de Revisión:
+              <input type="text" name="periodo_revision " required/>
+            </label>
+           </div>
+           <div class="field">
+            <label
+              >Tiempo de Entrega:
+              <input type="text" name="tiempo_entrega" required/>
+            </label>
+           </div>
+            <div class="field">
+            <label
+              >Inventario Inicial:
+              <input type="text"  name="inventario" required/>
+            </label>
+           </div>
+          <div class="fiel_btn">
+            <button class="btn" type="submit">Calcular</button>
+          </div>
+        </form>
+      </div>
+       <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Unidades Optimas</th>
+             <th>Stock Seguridad</th>
+              
+            </tr>
+          </thead>
+          <tbody>
+            <td>
+              {{calculo}}
+            </td>
+            <td>{{stock}}</td>
+        
+          </tbody>
+        </table>
+        
+       </div>
+        <div class="dialog">
+         <div>
+           Analisis
+         </div>
+         <p>{{resumen}}</p>
+       </div>
+      </div>
+      </div>
+    </main>
+    <script src="/static/checkbox-ModeloP.js"></script>
+    {% endblock %}

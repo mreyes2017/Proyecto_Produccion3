@@ -1,0 +1,73 @@
+<link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='lote_por_lote.css') }}" />
+{%extends 'base.html'%} {%block body%}
+<main>
+  <div class="formu">
+    <div class="header_form">Lote por Lote</div>
+    <form action="/lote_por_lote.html" method="POST">
+      <div>
+        <label for="">
+          Digite la cantidad de semanas a evaluar: </label>
+        <input type="text" name="cantidad_semanas" required />
+      </div>
+      <div class="fieds">
+        <label for="">
+          Ingrese la demanda de cada semana separado por coma: </label>
+        <input type="number" name="datos" required />
+      </div>
+      <div class="fields">
+        <label>
+          Costo de la Pieza:</label>
+        <input type="text" name="costo_pieza" required />
+      </div>
+      <div class="fieds">
+        <label for="">
+          Costo de pedido: </label>
+        <input name="costo_pedir" type="text" required />
+
+      </div>
+      <div class="fieds">
+        <label for="">
+          Costo de llevar a inventario(tasa)%: </label>
+        <input name="costo_pedir" type="text" name="tasa" required />
+
+      </div>
+
+      <div class="fiel_btn">
+        <button class="btn" type="submit" id="calcular">Calcular</button>
+      </div>
+    </form>
+  </div>
+
+  <div class="table-wra">
+    <table>
+      <thead>
+        <tr>
+          <th>Semanas</th>
+          <th>Necesidades Netas</th>
+          <th>Cantidad de Producción</th>
+          <th>Inventario</th>
+          <th>Costo de llevar al inventario</th>
+          <th>Costo de preparacion</th>
+          <th>Costo Total</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        {%for resultados in resultado.items()%}
+        <tr>
+          <td>{{resultados[1]["semana"]}}</td>
+          <td>{{resultados[1]["demanda"]}}</td>
+          <td>{{resultados[1]["producto"]}}</td>
+          <td>{{resultados[1]["inventario"]}}</td>
+          <td>{{resultados[1]["h"]}}</td>
+          <td>{{resultados[1]["costo_pedir"]}}</td>
+          <td>{{resultados[1]["costo_total"]}}</td>
+        </tr>
+        {%endfor%}
+      </tbody>
+
+
+    </table>
+  </div>
+</main>
+{%endblock%}

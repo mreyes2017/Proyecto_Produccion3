@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://kit.fontawesome.com/afd8869c61.js"></script>
+    <link rel="stylesheet" href="{{ url_for('static',filename='style.css') }}" />
+    <link
+      rel="stylesheet"
+      href="https://unicons.iconscout.com/release/v4.0.0/css/line.css"
+    />
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='style_login.css') }}" />
+    <title>Error</title>
+</head>
+<body>
+    <header>
+        <div class="logo">
+          <a href="/">
+          <img
+            class="logo_inner"
+            src="../static/img/logo_1.jpg"
+            alt="Logo Piltover"
+          /></a>
+        </div>
+        
+        <div class="search">
+          <div class="ul_search">
+            <ul>
+              <li><a href="/login" class="button">Login</a></li>
+              <li><a href="/login" class="button">Sing Up</a></li>
+            </ul>
+          </div>
+          <div class="mode">
+            <input type="checkbox" class="checkbox" id="chk" />
+            <label class="label" for="chk">
+              <div class="ball">
+                <img
+                  class="modeSN"
+                  src="../static/img/sun.png"
+                  alt=""
+                  style="height: 18px; width: 18px"
+                />
+              </div>
+            </label>
+          </div>
+        </div>
+      </header>
+    <div style="margin-left:20%" >
+        <img alt="{{ top }}" class="border" src="http://memegen.link/custom/{{ top | urlencode }}/{{ bottom | urlencode }}.jpg?alt=https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS7Ei7aHns9L9r2LabtRTOHM2v6D1iMaQiFlQ&usqp=CAU"/>
+    </div>
+</body>
+</html>
