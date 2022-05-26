@@ -11,6 +11,7 @@ from clases.q import *
 from clases.ROP import *
 from clases.p import *
 from clases.l4l2 import *
+from clases.LTC import *
 
 app = Flask(__name__)
 
@@ -207,7 +208,22 @@ def modeloeoq():
 
 @app.route("/LTC.html")
 def modeloctm():
-    return render_template("LTC.html")
+    if request.method == "POST":
+        nsemana = request.form.get("cantidad_semanas")
+        dato =lista_float(request.form.get("datos"))
+        costo_piez = request.form.get("costo_pieza")
+        costo_pedi = request.form.get("costo_pedir")
+        tas = request.form.get("tasa")
+        print(dato)
+        print(costo_pedi)
+        print(costo_piez)
+        print(tas)
+        lt =ltc(nsemana,dato,float(costo_piez),float(costo_pedi),float(tas))
+        resultado = lt.ltotal()
+        print(resultado)
+        return render_template("ltc.html",resultado=resultado)
+    else:
+        return render_template("ltc.html")
 
 
 @app.route("/costo_unitario_minimo.html")
