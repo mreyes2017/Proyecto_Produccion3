@@ -1,31 +1,36 @@
-<link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='lote_por_lote.css') }}" />
-{%extends 'base.html'%} {%block body%}
+<link
+  rel="stylesheet"
+  type="text/css"
+  href="{{ url_for('static',filename='costo_total_minimo.css') }}"
+/>
+{% extends 'base.html' %} {% block body %}
 <main>
   <div class="formu">
-    <div class="header_form">Lote por Lote</div>
-    <form action="/lote_por_lote.html" method="POST">
-      <div>
+    <div class="header_form">Modelo LTC </div>
+    <form action="/ltc.html">
+      <div class="field">
         <label for="">
           Digite la cantidad de semanas a evaluar: </label>
         <input type="number" name="cantidad_semanas" required />
       </div>
-      <div class="fieds">
+      <div class="field">
         <label for="">
           Ingrese la demanda de cada semana separado por coma: </label>
         <input type="number" name="datos" required />
+        <br>
       </div>
-      <div class="fields">
+      <div class="field">
         <label>
           Costo de la Pieza:</label>
         <input type="text" name="costo_pieza" required />
       </div>
-      <div class="fieds">
+      <div class="field">
         <label for="">
           Costo de pedido: </label>
         <input name="costo_pedir" type="text" required />
 
       </div>
-      <div class="fieds">
+      <div class="field">
         <label for="">
           Costo de llevar a inventario(tasa)%: </label>
         <input name="costo_pedir" type="text" name="tasa" required />
@@ -38,36 +43,26 @@
     </form>
   </div>
 
-  <div class="table-wra">
+  <div class="table-wrap">
     <table>
       <thead>
         <tr>
           <th>Semanas</th>
-          <th>Necesidades Netas</th>
-          <th>Cantidad de Producción</th>
-          <th>Inventario</th>
-          <th>Costo de llevar al inventario</th>
-          <th>Costo de preparacion</th>
+          <th>Cantidad Pedida</th>
+          <th>Cantidad de matener inventario</th>
+          <th>Costo de pedido</th>
           <th>Costo Total</th>
         </tr>
       </thead>
-
       <tbody>
-        {%for resultados in resultado.items()%}
         <tr>
-          <td>{{resultados[1]["semana"]}}</td>
-          <td>{{resultados[1]["demanda"]}}</td>
-          <td>{{resultados[1]["producto"]}}</td>
-          <td>{{resultados[1]["inventario"]}}</td>
-          <td>{{resultados[1]["h"]}}</td>
-          <td>{{resultados[1]["costo_pedir"]}}</td>
-          <td>{{resultados[1]["costo_total"]}}</td>
+          <td>30</td>
+          <td>10</td>
+          <td>5000</td>
         </tr>
-        {%endfor%}
       </tbody>
-
-
     </table>
   </div>
+ 
 </main>
-{%endblock%}
+{% endblock %}
