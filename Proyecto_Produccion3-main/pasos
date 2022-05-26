@@ -1,6 +1,0 @@
-1-instalar python.exe
-2-instalar visual studio code
-2-luego en un ide ejecutar:
-         pip install -r requirements.txt
-3-Para ejecutar la app en la terminal escribir:
-         python application.py
