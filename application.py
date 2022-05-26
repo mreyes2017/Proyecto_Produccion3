@@ -206,7 +206,7 @@ def modeloeoq():
     return render_template("cantidad_pedido_economica.html")
 
 
-@app.route("/LTC.html")
+@app.route("/ltc.html", methods=["GET","POST"])
 def modeloctm():
     if request.method == "POST":
         nsemana = request.form.get("cantidad_semanas")
