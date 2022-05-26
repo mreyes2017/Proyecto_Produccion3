@@ -1,0 +1,14 @@
+Flask-SocketIO
+pytz
+Flask
+Flask-Session
+psycopg2-binary
+SQLAlchemy
+flash
+json
+tempfile
+werkzeug
+csv
+urllib
+flask_socketio
+cs50
