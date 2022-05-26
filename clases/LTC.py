@@ -1,3 +1,4 @@
+
 class ltc:
     def __init__(self,nsemanas,datos,costo_pieza,costo_pedir,tasa):
         self.nsemanas = nsemanas
@@ -16,6 +17,7 @@ class ltc:
         v=1
         o=0
         l=0
+        z=0
         for x in self.datos:
             dem += float(x)
             tabla[f"{contador + 1}"] = \
@@ -34,15 +36,23 @@ class ltc:
             if(o==0):
                 l=0
             else:
-             z=(o-tabla[f"{contador+1}"]["demanda"])*(self.costo_pieza)*(self.tasa)
-             l=t+z
-             costo_total = self.costo_pedir+(t/1000)
+                
+             #z=(o-tabla[str(1)]["demanda"])*(self.costo_pieza)*(self.tasa)
+             
+             costo_total = self.costo_pedir+(t)
              contador += 1
-             print(tabla[f"{1}"]["demanda"])
+             v += 1
+             #print(z)
+        A = []
+        for i in range (1,contador-1):
+            # A.append(tabla[str(i)]["demanda"])
+             z=(o-float(tabla[str(i)]["demanda"]))*(self.costo_pieza)*(self.tasa)
+        
+             l += z
              print(l)
         return tabla
         
-         
+       # print(tabla[str()]["demanda"])
 prueba = ltc(8,[50,60,70,60,95,75,60,55],10,47,0.005)
  
 def lista_float(string):
@@ -52,7 +62,8 @@ def lista_float(string):
 resultado = prueba.ltotal()
 
 
-print(resultado[str(1)])
+print(resultado[str(3)])
+
 
 
       
