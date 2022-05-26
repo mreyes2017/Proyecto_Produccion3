@@ -183,10 +183,15 @@ def modelop():
 def lote_por_lote():
     if request.method == "POST":
         nsemanas = request.form.get("cantidad_semanas")
-        datos =lista_float(request.form.get("datos"))
+        print(nsemanas)
+        datos = lista_float(request.form.get("datos"))
+        print(datos)
         costo_pieza =request.form.get("costo_pieza")
+        print(costo_pieza)
         costo_pedir =request.form.get("costo_pedir")
+        print(costo_pedir)
         tasa = request.form.get("tasa")
+        print(tasa)
         l4ll =l4l(nsemanas,datos,float(costo_pieza),float(costo_pedir),float(tasa))
         resultado = l4ll.ltotal()
         print(resultado)
