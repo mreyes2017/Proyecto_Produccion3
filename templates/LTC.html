@@ -57,7 +57,7 @@
         </tr>
       </thead>
       <tbody>
-       
+       {%if resultado is defined %}
           {% for resultados in resultado.items()-%}
           <tr>
             <td>{{resultados[1]["semana"]}}</td>
@@ -69,6 +69,19 @@
             <td>{{resultados[1]["costo_total"]}}</td>
           </tr>
           {%endfor%}
+        {%else%}
+           {% for resultados in resultado -%}
+          <tr>
+            <td>{{resultados[1]["semana"]}}</td>
+            <td>{{resultados[1]["demanda"]}}</td>
+            <td>{{resultados[1]["calculo del lote"]}}</td>
+            <td>{{resultados[1]["producto"]}}</td>
+            <td>{{resultados[1]["h"]}}</td>
+            <td>{{resultados[1]["costo_pedir"]}}</td>
+            <td>{{resultados[1]["costo_total"]}}</td>
+          </tr>
+          {%endfor%}
+          {% endif %}
         
       </tbody>
     </table>
