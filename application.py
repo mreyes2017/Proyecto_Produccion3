@@ -12,7 +12,7 @@ from clases.ROP import *
 from clases.p import *
 from clases.l4l2 import *
 from clases.LTC import *
-#
+from clases.eoq import *
 app = Flask(__name__)
 
 
@@ -201,9 +201,27 @@ def lote_por_lote():
         resultado = {}
         return render_template("lote_por_lote.html",resultado = resultado)
 
-@app.route("/cantidad_pedido_economica.html")
+@app.route("/cantidad_pedido_economica.html", methods=["GET", "POST"])
 def modeloeoq():
-    return render_template("cantidad_pedido_economica.html")
+    if request.method == "POST":
+        nsemanas = request.form.get("cantidad_semanas")
+        print(nsemanas)
+        datos = lista_float(request.form.get("datos"))
+        print(datos)
+        costo_pieza =request.form.get("costo_pieza")
+        print(costo_pieza)
+        costo_pedir =request.form.get("costo_pedir")
+        print(costo_pedir)
+        tasa = request.form.get("tasa")
+        print(tasa)
+        eoql =eoq(nsemanas,datos,float(costo_pieza),float(costo_pedir),float(tasa))
+        inv = prueba.demeoq()
+        resultado = prueba.eoqtotal(inv)
+        #print(resultado)
+        return render_template("cantidad_pedido_economica.html",resultado=resultado)
+    else:
+        resultado = {}
+        return render_template("cantidad_pedido_economica.html",resultado = resultado)
 
 
 @app.route("/ltc.html", methods=["GET","POST"])
@@ -214,6 +232,10 @@ def modeloctm():
         costo_piez = request.form.get("costo_pieza")
         costo_pedi = request.form.get("costo_pedir")
         tas = request.form.get("tasa")
+        print(dato)
+        print(costo_pedi)
+        print(costo_piez)
+        print(tas)
         lt =ltc(nsemana,dato,float(costo_piez),float(costo_pedi),float(tas))
         resultado = lt.ltotal()
         print(resultado)

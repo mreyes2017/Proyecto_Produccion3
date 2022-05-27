@@ -3,55 +3,76 @@
   type="text/css"
   href="{{ url_for('static',filename='cantidad_pedido_economica.css') }}"
 />
-{% extends 'base.html' %} {% block body %}
+{%extends 'base.html'%} {%block body%}
 <main>
   <div class="formu">
-    <div class="header_form">Cantidad Pedido Economica</div>
-    <form action="">
-      <div class="fields">
-        <label>
-          Costo de la Pieza:
-          <input type="text" />
-        </label>
+    <div class="header_form">Cantidad pedido Economica</div>
+    <form action="/cantidad_pedido_economica.html" method="POST">
+      <div>
+        <label for="">
+          Digite la cantidad de semanas a evaluar: </label>
+        <input type="number" name="cantidad_semanas" required />
       </div>
       <div class="fieds">
         <label for="">
-          Costo de pedido:
-          <input type="text" />
-        </label>
+          Ingrese la demanda de cada semana separado por coma: </label>
+        <input type="text" name="datos" required />
       </div>
       <div class="fields">
-        <label for="">
-          Costo de llevar a invetario:
-          <input type="text" />
-        </label>
+        <label>
+          Costo de la Pieza:</label>
+        <input type="text" name="costo_pieza" required />
       </div>
-      <div>
+      <div class="fieds">
         <label for="">
-          Necesidades Netas Semanales: <input type="text" />
-        </label>
+          Costo de pedido: </label>
+        <input name="costo_pedir" type="text" required />
+
       </div>
+      <div class="fieds">
+        <label for="">
+          Costo de llevar a inventario(tasa)%: </label>
+        <input type="text" name="tasa" required />
+
+      </div>
+
       <div class="fiel_btn">
-        <button class="btn" type="submit">Calcular</button>
+        <button class="btn" type="submit" id="calcular">Calcular</button>
       </div>
     </form>
   </div>
 
-  <div class="table-wrap">
+  <div class="table-wra">
     <table>
       <thead>
         <tr>
           <th>Semanas</th>
           <th>Necesidades Netas</th>
           <th>Cantidad de Producción</th>
-          <th>Inventario Inicial</th>
+          <th>Inventario</th>
           <th>Costo de llevar al inventario</th>
           <th>Costo de preparacion</th>
           <th>Costo Total</th>
         </tr>
       </thead>
-      <tbody></tbody>
+
+      <tbody>
+        {%for resultados in resultado.items()%}
+        <tr>
+          <td>{{resultados[1]["semana"]}}</td>
+          <td>{{resultados[1]["demanda"]}}</td>
+          <td>{{resultados[1]["producto"]}}</td>
+          <td>{{resultados[1]["inventario"]}}</td>
+          <td>{{resultados[1]["h"]}}</td>
+          <td>{{resultados[1]["costo_pedir"]}}</td>
+          <td>{{resultados[1]["costo_total"]}}</td>
+        </tr>
+        {%endfor%}
+      </tbody>
+
+
     </table>
   </div>
 </main>
-{% endblock %}
+{%endblock%}
+

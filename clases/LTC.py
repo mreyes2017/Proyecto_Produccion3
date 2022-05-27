@@ -10,6 +10,7 @@ class ltc:
     def ltotal(self):
         tabla = {}
         contador = 0
+
         lisH = list()
         lisproduccion = list()
         lisD = list()
@@ -78,6 +79,16 @@ class ltc:
         print(listh4[4])
         costo_total = 47
         cont = 1
+
+        costo_total = self.costo_pedir
+        dem =0
+        t=0
+        v=1
+        o=0
+        l=0
+        z=0
+        h=2
+
         for x in self.datos:
             dem += float(x)
             costo_total = self.costo_pedir+((listotal[cont-1])/1000)
