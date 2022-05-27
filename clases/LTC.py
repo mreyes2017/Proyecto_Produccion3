@@ -71,12 +71,12 @@ class ltc:
                 listotal.append((lisH[i-1]*(self.costo_pieza*self.tasa))+((listH2[i-3])*(self.costo_pieza*self.tasa))+(
                     (listh3[i-3])*(self.costo_pieza*self.tasa))+((listh4[i-3])*(self.costo_pieza*self.tasa)))
 
-        print(lisH)  # bien primera resta
-        print(listH2)  # segunda resta bien
-        print(listh3)
-        print(listh4)
-        print(listotal)
-        print(listh4[4])
+        #print(lisH)  # bien primera resta
+        #print(listH2)  # segunda resta bien
+       # print(listh3)
+        #print(listh4)
+       # print(listotal)
+        #print(listh4[4])
         costo_total = 47
         cont = 1
 
