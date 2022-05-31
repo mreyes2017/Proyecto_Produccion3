@@ -104,6 +104,7 @@ class ltc:
                 print(listotal.index(listotal[i]))
                 valor.append(listotal.index(listotal[i]))
 
+
         print(lisH)  # bien primera resta
         print(listH2)  # segunda resta bien
         print(listh3)
@@ -112,6 +113,13 @@ class ltc:
         print(listh6)
         print(listotal)
         print(valor[0])
+
+        #print(lisH)  # bien primera resta
+        #print(listH2)  # segunda resta bien
+       # print(listh3)
+        #print(listh4)
+       # print(listotal)
+
         #print(listh4[4])
         costo_total = 47
         cont = 1
